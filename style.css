@@ -57,6 +57,12 @@ nav ul li a {
     font-size: 18px;
 }
 
+nav ul li a.selected {
+    background-color: #ffd700;
+    color: #3e2723;
+}
+
+
 section {
     padding: 20px;
     background-color: #f5f5f5; 
