@@ -1,4 +1,4 @@
-/* Reset default browser styles */
+/* Reset some default styles */
 body, h1, h2, p, ul, li, a {
     margin: 0;
     padding: 0;
@@ -6,13 +6,12 @@ body, h1, h2, p, ul, li, a {
     text-decoration: none;
 }
 
+/* Base styles */
 body {
     background-color: #004d40;
     font-family: 'Times New Roman', serif;
     line-height: 1.6;
     color: #3e2723;
-    margin: 0; /* Reset default margin */
-    padding: 0; /* Reset default padding */
 }
 
 header {
@@ -38,9 +37,89 @@ header p {
     font-size: 18px;
 }
 
-/* Add more CSS for nav, sections, and footer as needed */
+nav ul {
+    text-align: center;
+    background-color: #3e2723;
+    padding: 10px 0;
+}
 
-/* Mobile-first approach: Add media queries for larger screens */
-@media (min-width: 768px) {
-    /* CSS for screens with a minimum width of 768px */
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li:last-child {
+    margin-right: 0;
+}
+
+nav ul li a {
+    color: #fff;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+nav ul li a.selected {
+    background-color: #ffd700;
+    color: #3e2723;
+}
+
+section {
+    padding: 20px;
+    background-color: #f5f5f5;
+    margin: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+section h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+footer {
+    text-align: center;
+    background-color: #3e2723;
+    color: #fff;
+    padding: 10px 0;
+}
+
+a {
+    color: #ffd700;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #800000;
+}
+
+#qualifications {
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+    padding: 20px;
+}
+
+#qualifications h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+#qualifications ul {
+    list-style: none;
+    padding: 10px;
+    color: #333;
+}
+
+#qualifications li {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* Add media queries for responsiveness here */
+@media screen and (min-width: 768px) {
+    /* Add styles for larger screens here */
 }
