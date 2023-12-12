@@ -1,12 +1,12 @@
 body {
     font-family: 'Playfair Display', serif;
-    background-color: #F0F0F0; /* Light gray background */
+    background-color: #F0F0F0;
     line-height: 1.6;
-    color: #333; /* Dark gray text */
+    color: #333; 
 }
 
 header {
-    background-color: #1E2833; /* Deep blue background */
+    background-color: #1E2833; 
     color: #F5F5F5;
     text-align: center;
     padding: 20px;
@@ -31,7 +31,7 @@ header p {
 
 nav ul {
     text-align: center;
-    background-color: #3E4850; /* Darker gray navigation background */
+    background-color: #3E4850; 
     padding: 10px 0;
 }
 
@@ -42,12 +42,12 @@ nav ul li a {
 }
 
 nav ul li a.selected {
-    background-color: #FFD700; /* Accent color for selected item */
+    background-color: #FFD700;
     color: #1E2833;
 }
 
 section {
-    background-color: #FFFFFF; /* White content background */
+    background-color: #FFFFFF;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     margin: 20px;
@@ -55,11 +55,11 @@ section {
 }
 
 section h2 {
-    color: #1E2833; /* Deep blue heading text */
+    color: #1E2833; 
 }
 
 footer {
-    background-color: #3E4850; /* Darker gray footer background */
+    background-color: #3E4850; 
     color: #F5F5F5;
     text-align: center;
     padding: 10px 0;
@@ -83,17 +83,17 @@ a:hover {
 }
 
 #qualifications h2 {
-    color: #1E2833; /* Deep blue heading text */
+    color: #1E2833; 
 }
 
 #qualifications ul {
     list-style: none;
     padding: 10px;
-    color: #1E2833; /* Deep blue text */
+    color: #1E2833; 
 }
 
 #qualifications li {
     font-size: 18px;
     margin-bottom: 5px;
-    color: #1E2833; /* Deep blue text */
+    color: #1E2833; 
 }
