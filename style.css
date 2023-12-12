@@ -1,20 +1,13 @@
-body, h1, h2, p, ul, li, a {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    text-decoration: none;
-}
-
 body {
-    background-color: #9A9498;
-    font-family: 'Times New Roman', serif;
+    font-family: 'Playfair Display', serif;
+    background-color: #F0F0F0; /* Light gray background */
     line-height: 1.6;
-    color: #3e2723;
+    color: #333; /* Dark gray text */
 }
 
 header {
-    background-color: #004d40;
-    color: #fff;
+    background-color: #1E2833; /* Deep blue background */
+    color: #F5F5F5;
     text-align: center;
     padding: 20px;
 }
@@ -28,6 +21,7 @@ header img {
 }
 
 header h1 {
+    font-family: 'Playfair Display', serif;
     font-size: 36px;
 }
 
@@ -37,53 +31,42 @@ header p {
 
 nav ul {
     text-align: center;
-    background-color: #3e2723;
+    background-color: #3E4850; /* Darker gray navigation background */
     padding: 10px 0;
 }
 
-nav ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-nav ul li:last-child {
-    margin-right: 0;
-}
-
 nav ul li a {
-    color: #fff;
+    color: #F5F5F5;
     font-weight: bold;
     font-size: 18px;
 }
 
 nav ul li a.selected {
-    background-color: #ffd700;
-    color: #3e2723;
+    background-color: #FFD700; /* Accent color for selected item */
+    color: #1E2833;
 }
 
 section {
-    padding: 20px;
-    background-color: #f5f5f5;
-    margin: 20px;
+    background-color: #FFFFFF; /* White content background */
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+    padding: 20px;
 }
 
 section h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: #333;
+    color: #1E2833; /* Deep blue heading text */
 }
 
 footer {
+    background-color: #3E4850; /* Darker gray footer background */
+    color: #F5F5F5;
     text-align: center;
-    background-color: #3e2723;
-    color: #fff;
     padding: 10px 0;
 }
 
 a {
-    color: #ffd700;
+    color: #FFD700;
     transition: color 0.3s;
 }
 
@@ -92,7 +75,7 @@ a:hover {
 }
 
 #qualifications {
-    background-color: #f5f5f5;
+    background-color: #F5F5F5;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     margin: 20px;
@@ -100,22 +83,17 @@ a:hover {
 }
 
 #qualifications h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: #333;
+    color: #1E2833; /* Deep blue heading text */
 }
 
 #qualifications ul {
     list-style: none;
     padding: 10px;
-    color: #333;
+    color: #1E2833; /* Deep blue text */
 }
 
 #qualifications li {
     font-size: 18px;
     margin-bottom: 5px;
-    color: #333;
-}
-
-@media screen and (min-width: 768px) {
+    color: #1E2833; /* Deep blue text */
 }
