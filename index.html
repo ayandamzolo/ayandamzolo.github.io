@@ -146,61 +146,22 @@
         Connect with me on
         <a href="https://github.com/ayandamzolo/" target="_blank">Github</a>
       </p>
-      <p>Feel free to reach out to me!</p>
-      <form id="contact-form">
-        <div>
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="name" required />
-        </div>
-        <div>
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required />
-        </div>
-        <div>
-          <label for="subject">Subject:</label>
-          <input type="text" id="subject" name="subject" required />
-        </div>
-        <div>
-          <label for="message">Message:</label>
-          <textarea id="message" name="message" required></textarea>
-        </div>
-        <button type="submit">Send Message</button>
+      <p>Feel free to reach out to me!</p>  
+      
+      <form id="contact-form" method="post" action="/thanks" netlify>
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required />
+    
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" name="email" required />
+    
+        <label for="message">Your Message:</label>
+        <textarea id="message" name="message" required></textarea>
+    
+        <button type="submit">Send</button>
       </form>
-      <p id="success-message" style="display: none; color: green">
-        Message sent successfully! Thank you for contacting me!
-      </p>
-      <p id="error-message" style="display: none; color: red">
-        Failed to send message. Please try again later.
-      </p>
     </section>
 
-    <script>
-      document
-        .getElementById("contact-form")
-        .addEventListener("submit", function (event) {
-          event.preventDefault();
-          const formData = new FormData(this);
-          fetch("send_email.php", {
-            method: "POST",
-            body: formData,
-          })
-            .then((response) => {
-              if (response.ok) {
-                document.getElementById("success-message").style.display =
-                  "block";
-                document.getElementById("error-message").style.display = "none";
-                this.reset();
-              } else {
-                throw new Error("Failed to send message");
-              }
-            })
-            .catch((error) => {
-              console.error("Error:", error);
-              document.getElementById("success-message").style.display = "none";
-              document.getElementById("error-message").style.display = "block";
-            });
-        });
-    </script>
     <footer>
       <p>&copy; 2023 Mitchelle Ayanda Mzolo</p>
     </footer>
