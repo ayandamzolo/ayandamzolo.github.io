@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mitchelle Ayanda Mzolo</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <img src="mypic.JPG" alt="profile picture" />
+      <h1>Mitchelle Ayanda Mzolo</h1>
+      <p>Full-Stack Web Developer | Software Developer</p>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#qualifications">Qualifications</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        Hello there! I'm Mitchelle Ayanda Mzolo, a vibrant and multilingual lady
+        with a passion for technology and innovation. I embody a calm and
+        collected demeanor, allowing me to tackle challenges with poise and
+        determination. Dive into my portfolio to discover the breadth of my
+        skills and the depth of my projects. From crafting interactive chatbots
+        to developing engaging games like Tic-Tac-Toe, each project showcases my
+        creativity and technical prowess. Ready to embark on a journey of
+        innovation together? Feel free to reach out to me at
+        ayandamzolo11@gmail.com. Together, we can turn ideas into reality and
+        shape the future of technology.
+      </p>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <ul>
+        <li>HTML5, CSS, JavaScript, PHP</li>
+        <li>C++</li>
+        <li>SQL, Oracle, Linux, Docker, PostgreSQL</li>
+        <li>Node.js</li>
+        <li>Git, GitHub, GitBash</li>
+        <li>Figma, Canva</li>
+      </ul>
+    </section>
+
+    <section id="qualifications">
+      <h2>Qualifications</h2>
+      <ul>
+        <li>Bachelor's Degree in Software Development (in progress)</li>
+        <li>National Diploma in Web Development (in progress)</li>
+        <li>National Senior Certificate</li>
+      </ul>
+    </section>
+
+    <section id="portfolio">
+      <h2>Portfolio</h2>
+      <p>Explore my portfolio to learn more about my skills and projects.</p>
+
+      <div id="chatbot-section">
+        <h3>Chatbot Project</h3>
+        <p>Check out my chatbot project on GitHub:</p>
+        <a href="https://github.com/ayandamzolo/chatbot" target="_blank"
+          >Chatbot Repository</a
+        >
+        <p>
+          Live Website:
+          <a href="https://ayandamzolo.github.io/chatbot/" target="_blank"
+            >Visit Website</a
+          >
+        </p>
+      </div>
+
+      <div id="tic-tac-toe-section">
+        <h3>Tic-Tac-Toe Project</h3>
+        <p>Check out my tic-tac-toe project on GitHub:</p>
+        <a href="https://github.com/ayandamzolo/tick-tack-toe" target="_blank"
+          >Tic-Tac-Toe Repository</a
+        >
+        <p>
+          Live Website:
+          <a href="https://ayandamzolo.github.io/tick-tack-toe/" target="_blank"
+            >Visit Website</a
+          >
+        </p>
+      </div>
+
+      <div id="mentor-section">
+        <h3>Mentor for Gaming 4 Girls Hackathon (2023)</h3>
+        <p>Privileged to have mentored a talented team at the G4G hackathon.</p>
+        <p>
+          Our collaborative effort resulted in the team winning second place.
+        </p>
+        <p>
+          Special thanks to Umuzi and Unicef for the incredible opportunity.
+        </p>
+      </div>
+
+      <div id="website-section">
+        <h3>Personal Website</h3>
+        <p>
+          Explore my personal website for more details about my skills,
+          projects, and experiences.
+        </p>
+        <p>
+          GitHub Repository:
+          <a
+            href="https://github.com/ayandamzolo/ayandamzolo.github.io"
+            target="_blank"
+            >Website Repository</a
+          >
+        </p>
+        <p>
+          Live Website:
+          <a href="https://ayandamzolo.github.io/" target="_blank"
+            >Visit Website</a
+          >
+        </p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>
+        You can reach me at
+        <a href="mailto:ayandamzolo11@gmail.com" target="_blank"
+          >ayandamzolo11@gmail.com</a
+        >
+      </p>
+      <p>
+        Connect with me on
+        <a
+          href="https://www.linkedin.com/in/ayanda-mzolo-4a87b11b5/"
+          target="_blank"
+          >LinkedIn</a
+        >
+      </p>
+      <p>
+        Connect with me on
+        <a href="https://github.com/ayandamzolo/" target="_blank">Github</a>
+      </p>
+      <p>Feel free to reach out to me!</p>
+      <form id="contact-form">
+        <div>
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div>
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div>
+          <label for="subject">Subject:</label>
+          <input type="text" id="subject" name="subject" required />
+        </div>
+        <div>
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <button type="submit">Send Message</button>
+      </form>
+      <p id="success-message" style="display: none; color: green">
+        Message sent successfully! Thank you for contacting me!
+      </p>
+      <p id="error-message" style="display: none; color: red">
+        Failed to send message. Please try again later.
+      </p>
+    </section>
+
+    <script>
+      document
+        .getElementById("contact-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const formData = new FormData(this);
+          fetch("send_email.php", {
+            method: "POST",
+            body: formData,
+          })
+            .then((response) => {
+              if (response.ok) {
+                document.getElementById("success-message").style.display =
+                  "block";
+                document.getElementById("error-message").style.display = "none";
+                this.reset();
+              } else {
+                throw new Error("Failed to send message");
+              }
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+              document.getElementById("success-message").style.display = "none";
+              document.getElementById("error-message").style.display = "block";
+            });
+        });
+    </script>
+    <footer>
+      <p>&copy; 2023 Mitchelle Ayanda Mzolo</p>
+    </footer>
+  </body>
+</html>
