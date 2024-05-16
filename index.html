@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -19,6 +19,7 @@
         <li><a href="#skills">Skills</a></li>
         <li><a href="#qualifications">Qualifications</a></li>
         <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#resume">Resume</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -42,21 +43,29 @@
     <section id="skills">
       <h2>Skills</h2>
       <ul>
-        <li>HTML5, CSS, JavaScript, PHP</li>
-        <li>C++</li>
-        <li>SQL, Oracle, Linux, Docker, PostgreSQL</li>
-        <li>Node.js</li>
-        <li>Git, GitHub, GitBash</li>
-        <li>Figma, Canva</li>
+        <li>Frontend: HTML5, CSS, JavaScript, React, Responsive Design</li>
+        <li>Backend: Node.js, Express.js, REST API, JSON, XML</li>
+        <li>Programming Languages: C++, Jasmine Unit Testing</li>
+        <li>Database: MySQL, Oracle, PostgreSQL</li>
+        <li>
+          Tools & Technologies: Linux, Docker, Git, GitHub, GitBash, Figma,
+          Canva, Embarcadero RAD Studio
+        </li>
+        <li>
+          Soft Skills: Communication, Teamwork, Problem-solving, Time
+          Management, Attention to Detail
+        </li>
+        <li>Soft Skills(cont.): Empathy, Leadership, Continuous Learning</li>
+        <li>Other: Code Reviewing</li>
       </ul>
     </section>
 
     <section id="qualifications">
       <h2>Qualifications</h2>
       <ul>
-        <li>Bachelor's Degree in Software Development (in progress)</li>
+        <li>Bachelor's Degree in Software Development (incomplete)</li>
         <li>National Diploma in Web Development (in progress)</li>
-        <li>National Senior Certificate</li>
+        <li>National Senior Certificate (Bachelor's pass)</li>
       </ul>
     </section>
 
@@ -126,6 +135,14 @@
       </div>
     </section>
 
+    <section id="resume">
+      <h2>My Resume</h2>
+
+      <div>
+        <li><a href="Mitchelles resume.pdf" target="_blank">View Resume</a></li>
+        <li><a href="Mitchelles resume.pdf" download>Download Resume</a></li>
+      </div>
+    </section>
     <section id="contact">
       <h2>Contact</h2>
       <p>
@@ -146,41 +163,41 @@
         Connect with me on
         <a href="https://github.com/ayandamzolo/" target="_blank">Github</a>
       </p>
-      <p>Feel free to reach out to me!</p>  
-      
+      <p>Feel free to reach out to me!</p>
+
       <form id="contact-form" method="post" action="/thanks" netlify>
         <label for="name">Your Name:</label>
         <input type="text" id="name" name="name" required />
-    
+
         <label for="email">Your Email:</label>
         <input type="email" id="email" name="email" required />
-    
+
         <label for="message">Your Message:</label>
         <textarea id="message" name="message" required></textarea>
-    
+
         <button type="submit">Send</button>
       </form>
 
       <script>
         async function submitForm(event) {
           event.preventDefault(); // Prevent default form submission behavior
-      
-          const form = document.getElementById('contact-form');
+
+          const form = document.getElementById("contact-form");
           const formData = new FormData(form);
-      
+
           try {
-            const response = await fetch('/', {
-              method: 'POST',
-              body: formData
+            const response = await fetch("/", {
+              method: "POST",
+              body: formData,
             });
-      
+
             if (response.ok) {
-              window.location.href = '/thank-you.html';
+              window.location.href = "/thank-you.html";
             } else {
-              console.error('Failed to submit form');
+              console.error("Failed to submit form");
             }
           } catch (error) {
-            console.error('Error submitting form:', error);
+            console.error("Error submitting form:", error);
           }
         }
       </script>
