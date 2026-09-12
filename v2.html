@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mitchelle Mzolo — Full-Stack Engineer</title>
+<meta name="description" content="Mitchelle Mzolo — full-stack engineer in Pretoria. I build and secure multi-tenant mortgage technology: bank submission, access control, and the cloud infrastructure underneath.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sand:#F7E7D8; --sand-2:#F0D6C1; --sand-3:#E6C3A8;
+  --ink:#2C1E15; --ink-2:#6E5645; --ink-3:#957B66;
+  --ochre:#B85C2B; --glow:#F2B872;
+  --display:'Bricolage Grotesque',Georgia,serif;
+  --sans:'Plus Jakarta Sans',system-ui,sans-serif;
+  --pad:clamp(1.1rem,4vw,3.5rem);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;color:var(--ink);font-family:var(--sans);font-size:1.0625rem;line-height:1.6;
+  background:
+    radial-gradient(120% 80% at 78% -10%, var(--glow) 0%, transparent 55%),
+    radial-gradient(100% 70% at 8% 8%, #FFF6ED 0%, transparent 50%),
+    linear-gradient(168deg, var(--sand) 0%, var(--sand-2) 52%, var(--sand-3) 100%);
+  background-attachment:fixed;-webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+:focus-visible{outline:2.5px solid var(--ochre);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:var(--pad);top:.7rem;z-index:9;background:#fff;padding:.55rem .9rem;border-radius:999px}
+
+/* floating chrome, the one borrowed structural idea */
+.chrome{position:fixed;top:clamp(.8rem,2.2vw,1.4rem);left:0;right:0;z-index:8;
+  display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:0 var(--pad);pointer-events:none}
+.pill{pointer-events:auto;display:flex;align-items:center;gap:.35rem;background:rgba(255,252,248,.82);
+  backdrop-filter:blur(10px);border-radius:999px;padding:.4rem;box-shadow:0 6px 22px rgba(80,45,20,.13)}
+.pill a{text-decoration:none;font-weight:500;font-size:.95rem;padding:.42rem .95rem;border-radius:999px;white-space:nowrap}
+.pill a:hover{background:var(--sand-2)}
+.mono-mark{font-family:var(--display);font-weight:800;font-size:1.05rem;padding:.42rem .8rem;letter-spacing:-.02em}
+
+/* hero */
+.hero{min-height:min(82svh,46rem);display:flex;flex-direction:column;justify-content:center;padding:clamp(6rem,14vh,9rem) var(--pad) clamp(2rem,5vh,3rem);max-width:1180px;margin:0 auto}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(2.7rem,9.2vw,7rem);line-height:.94;
+  letter-spacing:-.035em;margin:0 0 1.4rem;max-width:15ch;text-wrap:balance}
+.lede{font-size:clamp(1.05rem,1.9vw,1.32rem);max-width:50ch;color:var(--ink-2);margin:0 0 1.6rem}
+.meta{display:flex;flex-wrap:wrap;gap:.5rem;margin:0}
+.chip{background:rgba(255,252,248,.7);border-radius:999px;padding:.35rem .85rem;font-size:.9rem;color:var(--ink-2)}
+.scroll-hint{margin:2.4rem 0 0;color:var(--ink-3);font-size:.9rem}
+
+/* the journey: sticky scene + steps scrolling past it */
+.journey{max-width:1180px;margin:0 auto;padding:0 var(--pad) 5rem;
+  display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);gap:clamp(1.5rem,5vw,4.5rem);align-items:start}
+.scene{position:sticky;top:19vh;align-self:start;max-width:22rem;margin-inline:auto}
+.scene figcaption{color:var(--ink-3);font-size:.88rem;margin-top:.9rem;max-width:34ch}
+svg{width:100%;height:auto;overflow:visible}
+.track{fill:none;stroke:rgba(120,80,50,.22);stroke-width:2.5;stroke-linecap:round}
+.track-live{fill:none;stroke:var(--ochre);stroke-width:3.5;stroke-linecap:round;
+  stroke-dasharray:var(--len);stroke-dashoffset:var(--len);transition:stroke-dashoffset .45s ease-out}
+.stop circle{fill:#FFF9F3;stroke:rgba(120,80,50,.3);stroke-width:2.5;transition:all .35s ease}
+.stop text{font-family:var(--sans);font-size:11px;font-weight:600;fill:var(--ink-3);transition:fill .35s ease}
+.stop.on circle{fill:var(--ochre);stroke:var(--ochre);r:9}
+.stop.on text{fill:var(--ink)}
+
+.steps{display:flex;flex-direction:column;gap:clamp(3rem,12vh,7rem);padding:14vh 0 40vh}
+.step{opacity:.42;transition:opacity .45s ease}
+.step.on{opacity:1}
+.step h2{font-family:var(--display);font-weight:800;font-size:clamp(1.5rem,3.2vw,2.15rem);
+  line-height:1.12;letter-spacing:-.02em;margin:0 0 .7rem}
+.step p{margin:0 0 .7rem;max-width:56ch}
+.cite{color:var(--ink-3);font-size:.93rem;margin-bottom:0!important}
+
+/* other work + skills */
+.block{max-width:1180px;margin:0 auto;padding:0 var(--pad) clamp(3rem,8vh,5rem)}
+.block > h2{font-family:var(--display);font-weight:800;font-size:clamp(1.7rem,3.6vw,2.5rem);
+  letter-spacing:-.025em;margin:0 0 .5rem}
+.block > .intro{color:var(--ink-2);max-width:52ch;margin:0 0 2.2rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,19rem),1fr));gap:1.1rem}
+.tile{background:rgba(255,252,248,.62);backdrop-filter:blur(6px);border-radius:22px;
+  padding:clamp(1.2rem,2.4vw,1.7rem);box-shadow:0 10px 32px rgba(90,50,22,.09)}
+.tile h3{font-family:var(--display);font-weight:800;font-size:1.3rem;letter-spacing:-.02em;margin:0 0 .5rem}
+.tile p{margin:0 0 .6rem}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));gap:1.6rem 2.2rem}
+.skills h3{font-size:1rem;font-weight:600;margin:0 0 .5rem;color:var(--ochre)}
+.skills ul{list-style:none;margin:0;padding:0;color:var(--ink-2)}
+.skills li{padding:.16rem 0}
+.highlight{border-left:3px solid var(--ochre);padding:.2rem 0 .2rem 1.15rem;margin:0 0 1.6rem}
+.highlight h3{font-family:var(--display);font-weight:800;font-size:1.22rem;margin:0 0 .35rem;letter-spacing:-.02em}
+.highlight p{margin:0}
+
+/* closing */
+.end{max-width:1180px;margin:0 auto;padding:0 var(--pad) 6rem}
+.card{background:rgba(255,252,248,.62);backdrop-filter:blur(6px);border-radius:28px;
+  padding:clamp(1.6rem,4vw,3rem);box-shadow:0 14px 44px rgba(90,50,22,.1)}
+.card h2{font-family:var(--display);font-weight:800;font-size:clamp(1.6rem,3.4vw,2.3rem);margin:0 0 1.2rem;letter-spacing:-.02em}
+.facts{display:grid;gap:.35rem;margin:0 0 1.6rem}
+.facts dt{font-weight:500}
+.facts dd{margin:0 0 .85rem;color:var(--ink-2)}
+.links{display:flex;flex-wrap:wrap;gap:.6rem;list-style:none;margin:0;padding:0}
+.links a{text-decoration:none;background:var(--ink);color:var(--sand);border-radius:999px;padding:.65rem 1.3rem;font-weight:500;display:inline-block}
+.links a:hover{background:var(--ochre)}
+
+@media (max-width:860px){
+  .journey{grid-template-columns:minmax(0,1fr)}
+  .scene{position:static;margin-bottom:1rem}
+  .steps{padding:2rem 0 0;gap:3rem}
+  .step{opacity:1}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .track-live{transition:none;stroke-dashoffset:0!important}
+  .step{opacity:1!important}
+  .stop circle,.stop text,.step{transition:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#work">Skip to the work</a>
+
+<div class="chrome">
+  <nav class="pill" aria-label="Main">
+    <span class="mono-mark">MM</span>
+    <a href="#work">Work</a>
+    <a href="#method">Method</a>
+    <a href="#skills">Skills</a>
+    <a href="#about">About</a>
+  </nav>
+  <div class="pill">
+    <a href="Mitchelle_Mzolo_Resume.pdf">CV</a>
+    <a href="mailto:ayandamzolo11@gmail.com">Email</a>
+  </div>
+</div>
+
+<header class="hero">
+  <h1>An application should never go quiet.</h1>
+  <p class="lede">I'm Mitchelle Mzolo, a full-stack engineer in Pretoria. I build and secure the
+  path a home-loan application takes to a bank — and the tooling that finds it when it stops moving.</p>
+  <p class="meta">
+    <span class="chip">Blue Bean Software</span>
+    <span class="chip">AWS Certified Cloud Practitioner</span>
+    <span class="chip">Pretoria, South Africa</span>
+  </p>
+  <p class="scroll-hint">Scroll to follow one application through.</p>
+</header>
+
+<main class="journey" id="work">
+  <figure class="scene">
+    <svg viewBox="0 0 300 400" role="img" aria-label="An application's journey: captured, secured, checked, submitted, exchanged, reconciled.">
+      <path class="track" d="M60 26 V376"/>
+      <path class="track-live" id="live" d="M60 26 V376"/>
+      <g class="stop" data-i="0"><circle cx="60" cy="26" r="7"/><text x="86" y="31">Captured</text></g>
+      <g class="stop" data-i="1"><circle cx="60" cy="96" r="7"/><text x="86" y="101">Secured</text></g>
+      <g class="stop" data-i="2"><circle cx="60" cy="166" r="7"/><text x="86" y="171">Checked</text></g>
+      <g class="stop" data-i="3"><circle cx="60" cy="236" r="7"/><text x="86" y="241">Submitted</text></g>
+      <g class="stop" data-i="4"><circle cx="60" cy="306" r="7"/><text x="86" y="311">Exchanged</text></g>
+      <g class="stop" data-i="5"><circle cx="60" cy="376" r="7"/><text x="86" y="381">Reconciled</text></g>
+    </svg>
+    <figcaption>Every step is a place an application can stall without anyone being told. Most of my work lives at one of these.</figcaption>
+  </figure>
+
+  <div class="steps">
+    <section class="step" data-i="0">
+      <h2>Document autofill</h2>
+      <p>Applicants upload payslips, bank statements and offers to purchase; a queued job reads them
+      with AWS Textract and fills the blank fields so nobody retypes a payslip. A document whose ID
+      number contradicts the applicant's never overwrites anything — it stays a suggestion. Tax
+      figures on payslips aren't suggested at all, because payslips mix monthly and year-to-date
+      numbers and a confident wrong figure is worse than an empty field.</p>
+      <p class="cite">Uploaded documents are treated as data, never as instructions. AWS Textract, Laravel queues, S3.</p>
+    </section>
+
+    <section class="step" data-i="1">
+      <h2>Platform security and access</h2>
+      <p>Multi-factor authentication and OTP across every login surface of a multi-tenant platform,
+      switchable per tenant. Web application firewall rules and rate limiting in production,
+      penetration-test findings tracked to remediation, and upload and download paths closed so
+      tenant documents stop being reachable by anyone who guesses a URL.</p>
+      <p class="cite">WAF, NGINX hardening, audit logging, session invalidation on both guards.</p>
+    </section>
+
+    <section class="step" data-i="2">
+      <h2>Bank integration service</h2>
+      <p>A service that decides whether an application qualifies for a bank's new origination system
+      or must fall back to the legacy one, then routes it and tracks amendments and replies. An
+      application that fails a rule is never rejected — it falls back, and the service reports every
+      reason it did, not just the first.</p>
+      <p class="cite">Built solo. Laravel, Vue 3, Inertia, Pest. Lint and tests run in CI on every push.</p>
+    </section>
+
+    <section class="step" data-i="3">
+      <h2>Bank submission engine</h2>
+      <p>The integration that submits applications and documents to South African lenders. When the
+      platform changed submission vendors, I designed the cutover so in-flight applications finished
+      on the vendor already holding them while new ones routed to the replacement — nobody
+      resubmitted anything, and onboarding the next lender became configuration, not code.</p>
+      <p class="cite">Primary author of 558 of 651 commits. Laravel, PHP, SOAP, MySQL, Docker.</p>
+    </section>
+
+    <section class="step" data-i="4">
+      <h2>Partner data pipelines</h2>
+      <p>Secure SFTP onboarding for partners who exchange files rather than call APIs, with schema
+      validation at the boundary and access scoped per partner.</p>
+      <p class="cite">AWS Transfer Family over S3, IAM roles, CloudWatch logging. Redshift and DMS troubleshooting.</p>
+    </section>
+
+    <section class="step" data-i="5">
+      <h2>Finding the ones that went quiet</h2>
+      <p>When a bank's replies stop arriving, nothing errors — the application simply sits. I work
+      these as read-only investigations first: queries anchored on the business reference rather than
+      a remembered row id, run and read before anything writes, and the repair values copied from the
+      bank's own stored response rather than from anyone's memory.</p>
+      <p class="cite">Eight production post-mortems and the vendor-cutover runbooks live in the repo, not in my head.</p>
+    </section>
+  </div>
+</main>
+
+<section class="block" id="method">
+  <h2>How I work</h2>
+  <p class="intro">Five habits that show up in everything above, and the reason each one earns its keep.</p>
+  <div class="grid">
+
+    <article class="tile">
+      <h3>I go to the layer under the tool</h3>
+      <p>When I wanted to understand a managed deploy platform, I rented a small droplet and did it
+      by hand instead — so that PHP-FPM is a process manager I can reason about rather than a service
+      that is either up or down, and so I know what a worker limit actually trades away.</p>
+      <p>That is why outage work lands. From a dashboard, a full disk is one red number. A level down
+      it's one table holding almost all of it, and then you have something to actually fix.</p>
+    </article>
+
+    <article class="tile">
+      <h3>The spec comes before the code</h3>
+      <p>Integrations get written against the specification first, not reverse-engineered from
+      whatever the first response happened to contain. Where ten things vary the same way, that's one
+      interface with ten implementations decided up front — not ten near-copies discovered later.</p>
+      <p>I'd rather walk a requirements document and estimate it with the people who wrote it than
+      receive a ticket and guess at what they meant.</p>
+    </article>
+
+    <article class="tile">
+      <h3>I test demand before I build</h3>
+      <p>Before building a billing feature I put up a landing page and took it to real customers, to
+      find out whether anyone wanted it while it was still cheap to be wrong.</p>
+      <p>And I shelved an internal tool once I found the market already had a good version. Not
+      falling in love with your own idea is harder than it sounds, and cheaper than the alternative.</p>
+    </article>
+
+    <article class="tile">
+      <h3>I prototype in something you can click</h3>
+      <p>My default way of explaining a concept is a working prototype rather than a document,
+      because people judge an interaction properly once they've felt it, and argue about a paragraph
+      describing one.</p>
+    </article>
+
+    <article class="tile">
+      <h3>I stay on the line while I fix it</h3>
+      <p>Through an outage I keep stakeholders updated the whole way rather than going quiet and
+      returning with a resolution. People can plan around a problem they can see.</p>
+      <p>The same instinct applies to access: when a colleague needed data, I set them up with scoped
+      read-only credentials of their own instead of handing over mine.</p>
+    </article>
+
+    <article class="tile">
+      <h3>Then I write it down</h3>
+      <p>Post-mortems for the failures worth understanding, runbooks for the procedures someone else
+      will have to run at an awkward hour, and a business-logic document a stakeholder can sign off
+      from. Knowledge that only lives in my head is a single point of failure.</p>
+    </article>
+
+  </div>
+</section>
+
+<section class="block">
+  <h2>Elsewhere</h2>
+  <p class="intro">Work away from the loan path — a booking platform, a payments bot, an internal
+  dashboard, and one project that is entirely mine.</p>
+  <div class="grid">
+    <article class="tile">
+      <h3>Promotion engine</h3>
+      <p>Sole author of the discount system for a trip-booking platform: percentage and cash codes
+      with geographic, product, day-of-week, minimum-cart and first-booking-only rules, separated
+      into the code, the rule that governs it, and the redemption that records its use.</p>
+      <p>The hard part is refunds. When a trip is modified after a code has been applied, the
+      discount has to be recalculated against what the booking has become, not what it was.</p>
+      <p class="cite">Laravel. I also wrote the business-logic document the stakeholders signed off from.</p>
+    </article>
+
+    <article class="tile">
+      <h3>Payment recovery bot</h3>
+      <p>A WhatsApp bot that re-engages customers with unpaid orders and hands over to a human when
+      it can't help. Most of its tests cover the awkward cases rather than the happy path: webhooks
+      arriving out of order, replies landing on closed conversations, numbers it has never seen, and
+      its own records disagreeing with the provider's.</p>
+      <p class="cite">124 commits, sole author. Laravel, WhatsApp Cloud API, Pest.</p>
+    </article>
+
+    <article class="tile">
+      <h3>Operations dashboard</h3>
+      <p>Reporting and KPI dashboard for an internet provider's internal teams, with a shared
+      permission model so each team sees only its own figures.</p>
+      <p class="cite">Contributor. Vue 3, TypeScript, Supabase, CASL.</p>
+    </article>
+
+    <article class="tile">
+      <h3>ModernTsonga</h3>
+      <p>A reference for Xitsonga — phrases, proverbs and oral tradition — built because the language
+      deserves a good website. This one is mine, and it's the project I keep coming back to.</p>
+      <p class="cite"><a href="https://moderntsonga.netlify.app/">moderntsonga.netlify.app</a></p>
+    </article>
+  </div>
+</section>
+
+<section class="block" id="skills">
+  <h2>Skills</h2>
+  <div class="skills">
+    <div>
+      <h3>Cloud and infrastructure</h3>
+      <ul>
+        <li>AWS — Transfer Family, S3, IAM, VPC, Lambda, CloudWatch</li>
+        <li>Secure SFTP onboarding and partner data exchange</li>
+        <li>Redshift and DMS troubleshooting</li>
+        <li>Docker, Linux, NGINX</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Security</h3>
+      <ul>
+        <li>Multi-tenant MFA and OTP enforcement</li>
+        <li>WAF configuration and rate limiting</li>
+        <li>Penetration-test remediation</li>
+        <li>Audit logging and secure file handling</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Backend and platform</h3>
+      <ul>
+        <li>PHP, Laravel, REST APIs, webhooks</li>
+        <li>Vue.js, Inertia.js</li>
+        <li>MySQL, PostgreSQL</li>
+        <li>Redis, MinIO, MeiliSearch</li>
+      </ul>
+    </div>
+    <div>
+      <h3>AI and automation</h3>
+      <ul>
+        <li>Python and FastAPI microservices</li>
+        <li>OCR — AWS Textract, EasyOCR, Tesseract</li>
+        <li>Language-model assisted extraction</li>
+        <li>Containerised deployment</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="end" id="about">
+  <div class="card">
+    <h2>Background</h2>
+
+    <div class="highlight">
+      <h3>Mentor, Gaming 4 Girls Hackathon (2023)</h3>
+      <p>Mentored a team at the G4G hackathon run by Umuzi and UNICEF, guiding them to second place.
+      Getting a team unstuck under a deadline is a different skill from writing the code yourself,
+      and it is the part I would happily do more of.</p>
+    </div>
+
+    <dl class="facts">
+      <dt>AWS Certified Cloud Practitioner (CLF-C02)</dt><dd>2026</dd>
+      <dt>National Diploma, Information Technology</dt><dd>University of South Africa — in progress</dd>
+      <dt>National Certificate, IT Systems Development (NQF 5)</dt><dd>Umuzi Academy</dd>
+    </dl>
+
+    <p>Currently a software developer at Blue Bean Software, working on multi-tenant mortgage
+    technology. Before that I spent two years at Hit The Road Today (2024–2026) building Laravel and
+    Vue platform features, and started out at Umuzi Academy. Most of my work has happened in a
+    legacy codebase with a live client on the other end of it, which is a particular skill and not
+    one anybody puts on a job advert.</p>
+
+    <ul class="links">
+      <li><a href="mailto:ayandamzolo11@gmail.com">Email me</a></li>
+      <li><a href="https://www.linkedin.com/in/mitchelle-mzolo-4a87b11b5/">LinkedIn</a></li>
+      <li><a href="Mitchelle_Mzolo_Resume.pdf">Download CV</a></li>
+    </ul>
+  </div>
+</section>
+
+<script>
+const live = document.getElementById('live');
+const len = live.getTotalLength();
+live.style.setProperty('--len', len);
+const steps = [...document.querySelectorAll('.step')];
+const stops = [...document.querySelectorAll('.stop')];
+
+// The track draws to the furthest step reached, so the line is a progress
+// record rather than decoration.
+function setActive(i){
+  steps.forEach((s,n)=>s.classList.toggle('on', n===i));
+  stops.forEach((s,n)=>s.classList.toggle('on', n<=i));
+  live.style.strokeDashoffset = len - (len * (i+1) / steps.length);
+}
+
+const io = new IntersectionObserver(entries=>{
+  entries.filter(e=>e.isIntersecting)
+    .sort((a,b)=>a.boundingClientRect.top-b.boundingClientRect.top)
+    .slice(0,1)
+    .forEach(e=>setActive(steps.indexOf(e.target)));
+},{rootMargin:'-42% 0px -42% 0px'});
+
+steps.forEach(s=>io.observe(s));
+setActive(0);
+</script>
+</body>
+</html>
