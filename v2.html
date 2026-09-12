@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mitchelle Mzolo — Full-Stack Engineer</title>
-<meta name="description" content="Mitchelle Mzolo — full-stack engineer in Pretoria. I build and secure multi-tenant mortgage technology: bank submission, access control, and the cloud infrastructure underneath.">
+<title>Mitchelle Mzolo, Full-Stack Engineer</title>
+<meta name="description" content="Mitchelle Mzolo, full-stack engineer in Pretoria. I build and secure multi-tenant mortgage technology: bank submission, access control, and the cloud infrastructure underneath.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -82,6 +82,7 @@ svg{width:100%;height:auto;overflow:visible}
   padding:clamp(1.2rem,2.4vw,1.7rem);box-shadow:0 10px 32px rgba(90,50,22,.09)}
 .tile h3{font-family:var(--display);font-weight:800;font-size:1.3rem;letter-spacing:-.02em;margin:0 0 .5rem}
 .tile p{margin:0 0 .6rem}
+.mascot{display:block;width:min(100%,30rem);height:auto;margin:0 auto 2.4rem}
 .skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));gap:1.6rem 2.2rem}
 .skills h3{font-size:1rem;font-weight:600;margin:0 0 .5rem;color:var(--ochre)}
 .skills ul{list-style:none;margin:0;padding:0;color:var(--ink-2)}
@@ -142,7 +143,7 @@ svg{width:100%;height:auto;overflow:visible}
 <header class="hero">
   <h1>Nothing should fail quietly.</h1>
   <p class="lede">I'm Mitchelle Mzolo, a full-stack engineer in Pretoria. I build the systems that move
-  money, documents and messages between companies — bank submissions for a lending platform,
+  money, documents and messages between companies: bank submissions for a lending platform,
   customer conversations and executive reporting for an internet provider, booking and discount
   logic for a travel business. And when one of them stops without telling anyone, I'm usually the
   one who finds it.</p>
@@ -177,8 +178,7 @@ svg{width:100%;height:auto;overflow:visible}
       <h2>Integrations that can't fail silently</h2>
       <p>I own the path applications take from a lending platform to South African banks. When the
       platform changed submission vendors I designed the cutover so in-flight applications finished
-      on the vendor already holding them while new ones routed to the replacement — nobody
-      resubmitted anything, and onboarding the next lender became configuration, not code. A
+      on the vendor already holding them while new ones routed to the replacement, so nobody resubmitted anything, and onboarding the next lender became configuration, not code. A
       companion service decides whether an application qualifies for a bank's new origination
       system or falls back to the legacy one, and reports every reason it fell back, not just the
       first.</p>
@@ -188,13 +188,13 @@ svg{width:100%;height:auto;overflow:visible}
     <section class="step" data-i="1">
       <h2>Reading documents without trusting them</h2>
       <p>Applicants upload payslips, bank statements and offers to purchase. In production, OCR runs on a
-      self-hosted container on our own infrastructure — no third-party API key, and no client
-      document leaves the network — and a language model turns that text into application fields.
+      self-hosted container on our own infrastructure, with no third-party API key, and no client
+      document leaves the network, and a language model turns that text into application fields.
       Which model reads which document type was decided by measurement, not preference: the cheaper
       model dropped names on identity documents and moved bank-statement expense totals by more
       than ten percent between two identical runs, so those types route to a stronger one and the
       documents that agreed stayed put.</p>
-      <p class="cite">Mortgage platform · PaddleOCR in Docker, Claude on Amazon Bedrock, Laravel queues. Field-hygiene guards are pinned to a sweep of over two thousand real documents — including one that stops a name like Nomvula being mistaken for the word "None".</p>
+      <p class="cite">Mortgage platform · PaddleOCR in Docker, Claude on Amazon Bedrock, Laravel queues. Field-hygiene guards are pinned to a sweep of over two thousand real documents, including one that stops a name like Nomvula being mistaken for the word "None".</p>
     </section>
 
     <section class="step" data-i="2">
@@ -203,7 +203,7 @@ svg{width:100%;height:auto;overflow:visible}
       it can't help. Almost every commit in it is about not leaving a person hanging: don't say
       "shortly" outside working hours, don't offer a support team that is offline, answer a
       double-booked installation instead of going quiet, and don't reply "didn't catch that" to
-      someone who just typed a date. Its tests cover the awkward cases — webhooks arriving out of
+      someone who just typed a date. Its tests cover the awkward cases: webhooks arriving out of
       order, replies landing on closed conversations, numbers it has never seen, and its own records
       disagreeing with the provider's.</p>
       <p class="cite">Internet provider · 127 commits, sole author. Laravel, WhatsApp Cloud API, Pest.</p>
@@ -214,8 +214,7 @@ svg{width:100%;height:auto;overflow:visible}
       <p>An executive and team dashboard for an internet provider: acquisition funnel, product mix,
       early-life churn and cohort retention, with a permission model so each team sees only its own
       figures. When the views behind it started timing out I materialised the order milestones
-      underneath, and made a failed metric report the actual reason instead of rendering an empty
-      chart — a dashboard that lies by omission is worse than one that admits it is broken.</p>
+      underneath, and made a failed metric report the actual reason instead of rendering an empty chart. A dashboard that lies by omission is worse than one that admits it is broken.</p>
       <p class="cite">Internet provider · 182 commits, March to September 2026. Vue 3, TypeScript, Supabase, CASL.</p>
     </section>
 
@@ -223,7 +222,7 @@ svg{width:100%;height:auto;overflow:visible}
       <h2>Money logic, and what happens when it changes</h2>
       <p>Sole author of the discount system for a travel booking platform: percentage and cash codes
       with geographic, product, day-of-week, minimum-cart and first-booking-only rules, modelled as
-      three separate things — the code, the rule that governs it, and the redemption that records
+      three separate things: the code, the rule that governs it, and the redemption that records
       its use. The hard part is refunds. When a trip is modified after a code has been applied, the
       discount has to be recalculated against what the booking became, not what it was. I also wrote
       the business-logic document the stakeholders signed off from.</p>
@@ -242,7 +241,7 @@ svg{width:100%;height:auto;overflow:visible}
 
     <section class="step" data-i="6">
       <h2>Finding what went quiet</h2>
-      <p>When replies stop arriving, nothing errors — the work simply sits. This is the part I am
+      <p>When replies stop arriving, nothing errors. The work simply sits. This is the part I am
       best at. I run these as read-only investigations first: queries anchored on the business
       reference rather than a remembered row id, read before anything writes, and repair values
       copied from the upstream system's own stored response rather than from anyone's memory. Then
@@ -259,7 +258,7 @@ svg{width:100%;height:auto;overflow:visible}
   <div class="grid">
     <article class="tile">
       <h3><i class="fa-solid fa-book-open" aria-hidden="true"></i> ModernTsonga</h3>
-      <p>A reference for Xitsonga — phrases, proverbs and oral tradition — built because the language
+      <p>A reference for Xitsonga: phrases, proverbs and oral tradition, built because the language
       deserves a good website. This one is mine, and it is the project I keep coming back to.</p>
       <p class="cite"><a href="https://moderntsonga.netlify.app/">moderntsonga.netlify.app</a></p>
     </article>
@@ -269,7 +268,7 @@ svg{width:100%;height:auto;overflow:visible}
       <p>A prototype for a habit I am trying to build: spin a real complaint from everyday life, get
       a research clock to answer who, what, when, where, why and how, and earn build time for the
       answers that are specific rather than guessed. Then a bot uses what you shipped, as the person
-      who complained, on a slow connection and an old phone — and only scores you if it can finish
+      who complained, on a slow connection and an old phone, and only scores you if it can finish
       the job.</p>
       <p class="cite">In progress. It exists because my failure mode is designing the whole platform instead of finishing version one.</p>
     </article>
@@ -286,13 +285,16 @@ svg{width:100%;height:auto;overflow:visible}
 
 <section class="block" id="method">
   <h2>How I work</h2>
-  <p class="intro">Five habits that show up in everything above, and the reason each one earns its keep.</p>
+  <p class="intro">Six habits that show up in everything above, and the reason each one earns its keep.
+  An octopus does not smash the jar. It works the lid, feels the mechanism, and gets in.</p>
+  <img class="mascot" src="octopus.svg" width="680" height="660" loading="lazy"
+       alt="An octopus character in four poses: holding a mug of over-steeped rooibos, stitching the spine of a book, juggling three brushes at once, and wearing headphones beside a speech bubble.">
   <div class="grid">
 
     <article class="tile">
       <h3>I go to the layer under the tool</h3>
       <p>When I wanted to understand a managed deploy platform, I rented a small droplet and did it
-      by hand instead — so that PHP-FPM is a process manager I can reason about rather than a service
+      by hand instead, so that PHP-FPM is a process manager I can reason about rather than a service
       that is either up or down, and so I know what a worker limit actually trades away.</p>
       <p>That is why outage work lands. From a dashboard, a full disk is one red number. A level down
       it's one table holding almost all of it, and then you have something to actually fix.</p>
@@ -302,7 +304,7 @@ svg{width:100%;height:auto;overflow:visible}
       <h3>The spec comes before the code</h3>
       <p>Integrations get written against the specification first, not reverse-engineered from
       whatever the first response happened to contain. Where ten things vary the same way, that's one
-      interface with ten implementations decided up front — not ten near-copies discovered later.</p>
+      interface with ten implementations decided up front, not ten near-copies discovered later.</p>
       <p>I'd rather walk a requirements document and estimate it with the people who wrote it than
       receive a ticket and guess at what they meant.</p>
     </article>
@@ -346,7 +348,7 @@ svg{width:100%;height:auto;overflow:visible}
     <div>
       <h3>Cloud and infrastructure</h3>
       <ul>
-        <li>AWS — Transfer Family, S3, IAM, VPC, Lambda, CloudWatch</li>
+        <li>AWS: Transfer Family, S3, IAM, VPC, Lambda, CloudWatch</li>
         <li>Secure SFTP onboarding and partner data exchange</li>
         <li>Redshift and DMS troubleshooting</li>
         <li>Docker, Linux, NGINX</li>
@@ -374,7 +376,7 @@ svg{width:100%;height:auto;overflow:visible}
       <h3>AI and automation</h3>
       <ul>
         <li>Python and FastAPI microservices</li>
-        <li>OCR — AWS Textract, EasyOCR, Tesseract</li>
+        <li>OCR: PaddleOCR and AWS Textract</li>
         <li>Language-model assisted extraction</li>
         <li>Containerised deployment</li>
       </ul>
@@ -390,12 +392,12 @@ svg{width:100%;height:auto;overflow:visible}
 
     <dl class="facts">
       <dt>AWS Certified Cloud Practitioner (CLF-C02)</dt><dd>2026</dd>
-      <dt>National Diploma, Information Technology</dt><dd>University of South Africa — in progress</dd>
+      <dt>National Diploma, Information Technology</dt><dd>University of South Africa, in progress</dd>
       <dt>National Certificate, IT Systems Development (NQF 5)</dt><dd>Umuzi Academy</dd>
     </dl>
 
     <p>Currently a software developer at Blue Bean Software, working on multi-tenant mortgage
-    technology. Before that I spent two years at Hit The Road Today (2024–2026) building Laravel and
+    technology. Before that I spent two years at Hit The Road Today (2024 to 2026) building Laravel and
     Vue platform features, and started out at Umuzi Academy. Most of my work has happened in a
     legacy codebase with a live client on the other end of it, which is a particular skill and not
     one anybody puts on a job advert.</p>

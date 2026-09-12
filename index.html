@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mitchelle Mzolo — Software Engineer</title>
-<meta name="description" content="Mitchelle Mzolo — full-stack engineer in Pretoria. I build and secure multi-tenant mortgage technology: bank submission, access control, and the cloud infrastructure underneath.">
+<title>Mitchelle Mzolo, Software Engineer</title>
+<meta name="description" content="Mitchelle Mzolo, full-stack engineer in Pretoria. I build and secure multi-tenant mortgage technology: bank submission, access control, and the cloud infrastructure underneath.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -28,7 +28,7 @@
     <section class="hero">
         <h1>Software that must not fail quietly.</h1>
         <p class="lede">I'm Mitchelle Mzolo, a full-stack engineer in Pretoria. I build and secure
-        multi-tenant mortgage technology — the bank-submission path where a routing mistake means a
+        multi-tenant mortgage technology: the bank-submission path where a routing mistake means a
         real person's application silently never reaches a lender, and the cloud and access
         infrastructure underneath it.</p>
         <p class="place">Blue Bean Software. AWS Certified Cloud Practitioner.</p>
@@ -44,7 +44,7 @@
                 integration that submits applications and documents to banks and reconciles their
                 replies. When the platform changed submission vendors, I designed the cutover so
                 in-flight applications finished on the vendor already holding them while new ones
-                routed to the replacement — nobody resubmitted anything, and onboarding the next
+                routed to the replacement, so nobody resubmitted anything, and onboarding the next
                 lender became a configuration change instead of a code change.</p>
                 <p class="cite">Primary author of 558 of 651 commits. Laravel, PHP, SOAP, MySQL, Docker.</p>
             </article>
@@ -64,8 +64,7 @@
                 <h3>Bank integration service</h3>
                 <p>A service that decides whether a loan application qualifies for a bank's new
                 origination system or must fall back to the legacy one, then routes it and tracks
-                amendments and replies. An application that fails a rule is never rejected — it
-                falls back, and the service reports every reason it did.</p>
+                amendments and replies. An application that fails a rule is never rejected. It falls back, and the service reports every reason it did.</p>
                 <p class="cite">Built solo. Laravel, Vue 3, Inertia, Pest. Lint and tests run in CI on every push.</p>
             </article>
 
@@ -84,7 +83,7 @@
                 <p>Applicants upload payslips, bank statements and offers to purchase; a queued job
                 reads them with AWS Textract and fills the blank fields on the application form so
                 nobody retypes a payslip. A document whose ID number contradicts the applicant's
-                never overwrites anything — it stays a suggestion. Tax figures on payslips are
+                never overwrites anything. It stays a suggestion. Tax figures on payslips are
                 deliberately not suggested at all, because payslips mix monthly and year-to-date
                 numbers, and a confident wrong figure is worse than an empty field. Uploaded
                 documents are treated as data, never as instructions.</p>
@@ -100,7 +99,7 @@
 
             <article class="entry">
                 <h3>ModernTsonga</h3>
-                <p>A reference for Xitsonga — phrases, proverbs and oral tradition — built because the
+                <p>A reference for Xitsonga: phrases, proverbs and oral tradition, built because the
                 language deserves a good website. This one is mine, and it is the project I keep
                 coming back to.</p>
                 <p class="cite"><a href="https://moderntsonga.netlify.app/">moderntsonga.netlify.app</a></p>
@@ -114,7 +113,7 @@
         <div class="col prose">
             <p>A bug report names a symptom. Before I edit anything I find every caller of the code
             I'm about to touch, because one guard in the shared function is a smaller change than a
-            guard in each of its callers — and fixing only the path in the ticket leaves every
+            guard in each of its callers, and fixing only the path in the ticket leaves every
             sibling path still broken.</p>
 
             <p>Before I touch production data I write the read-only version first: queries anchored
@@ -135,7 +134,7 @@
                 <dt>AWS Certified Cloud Practitioner (CLF-C02)</dt>
                 <dd>2026</dd>
                 <dt>National Diploma, Information Technology</dt>
-                <dd>University of South Africa — in progress</dd>
+                <dd>University of South Africa, in progress</dd>
                 <dt>National Certificate, IT Systems Development (NQF 5)</dt>
                 <dd>Umuzi Academy</dd>
             </dl>
