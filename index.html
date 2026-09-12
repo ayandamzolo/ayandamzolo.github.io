@@ -80,12 +80,15 @@
             </article>
 
             <article class="entry">
-                <h3>Document extraction service</h3>
-                <p>An OCR and language-model pipeline that turns uploaded documents into structured,
-                checkable data, so applications stop stalling on a human retyping a payslip. Each
-                extracted field carries a confidence score, and anything below the threshold goes to a
-                person rather than being guessed at.</p>
-                <p class="cite">In progress. Python, FastAPI, EasyOCR and Tesseract, Docker.</p>
+                <h3>Document autofill</h3>
+                <p>Applicants upload payslips, bank statements and offers to purchase; a queued job
+                reads them with AWS Textract and fills the blank fields on the application form so
+                nobody retypes a payslip. A document whose ID number contradicts the applicant's
+                never overwrites anything — it stays a suggestion. Tax figures on payslips are
+                deliberately not suggested at all, because payslips mix monthly and year-to-date
+                numbers, and a confident wrong figure is worse than an empty field. Uploaded
+                documents are treated as data, never as instructions.</p>
+                <p class="cite">AWS Textract, Laravel queues, S3. Shipped 2026.</p>
             </article>
 
             <article class="entry">
