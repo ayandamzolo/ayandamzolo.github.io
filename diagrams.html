@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mechanism diagrams — drop-in</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{ --ink:#1d2430; --ink-2:#5c6878; --line:#c3ccd8; --amber:#c8862a;
+       --live:#1f6f5c; --old:#7b8798; --bg:#f4f1ec; --panel:#fff;
+       --sans:'Plus Jakarta Sans',system-ui,sans-serif; }
+*{box-sizing:border-box}
+body{margin:0;padding:clamp(1rem,4vw,3rem);background:var(--bg);color:var(--ink);
+     font-family:var(--sans);line-height:1.6}
+.wrap{max-width:54rem;margin:0 auto}
+figure{margin:0 0 3.5rem;background:var(--panel);border-radius:14px;padding:clamp(1rem,3vw,2rem)}
+h2{font-size:1.25rem;margin:0 0 .3rem}
+.sub{color:var(--ink-2);margin:0 0 1.5rem;font-size:.95rem}
+svg{width:100%;height:auto;display:block;overflow:visible}
+figcaption{color:var(--ink-2);font-size:.9rem;margin-top:1.1rem;max-width:52ch}
+text{font-family:var(--sans);fill:var(--ink)}
+.lbl{font-size:12px;font-weight:600}
+.small{font-size:10.5px;fill:var(--ink-2);font-weight:500}
+.rail{stroke:var(--line);stroke-width:1.5}
+.old{stroke:var(--old);stroke-width:5;stroke-linecap:round;fill:none}
+.new{stroke:var(--live);stroke-width:5;stroke-linecap:round;fill:none}
+.cut{stroke:var(--amber);stroke-width:2;stroke-dasharray:5 4}
+.node{fill:var(--panel);stroke:var(--ink);stroke-width:1.6}
+.flow{stroke:var(--ink);stroke-width:1.8;fill:none}
+.fallback{stroke:var(--old);stroke-width:1.6;fill:none;stroke-dasharray:5 4}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<figure>
+  <h2>The vendor cutover</h2>
+  <p class="sub">Nobody resubmitted anything.</p>
+  <svg viewBox="0 0 700 316" role="img"
+       aria-label="Timeline showing applications submitted before a cutover date continuing to complete on the old vendor, while applications started after the date route to the new vendor.">
+    <line class="rail" x1="40" y1="278" x2="670" y2="278"/>
+    <line class="cut" x1="350" y1="40" x2="350" y2="290"/>
+    <text class="lbl" x="350" y="28" text-anchor="middle" fill="#c8862a">cutover date</text>
+
+    <text class="lbl" x="40" y="70">Vendor A</text>
+    <path class="old" d="M60 95 H300"/>
+    <path class="old" d="M150 125 H430"/>
+    <path class="old" d="M250 155 H520"/>
+    <text class="small" x="536" y="159">finished where it started</text>
+
+    <text class="lbl" x="380" y="196">Vendor B</text>
+    <path class="new" d="M380 218 H600"/>
+    <path class="new" d="M470 246 H650"/>
+
+    <text class="small" x="60" y="302">application submitted</text>
+    <text class="small" x="660" y="302" text-anchor="end">completed</text>
+  </svg>
+  <figcaption>Each bar is one application. Submission time decides the vendor, not the deploy
+  date — so work already in flight completed on the vendor holding it, and only new work went to
+  the replacement. Onboarding the next lender became a configuration change.</figcaption>
+</figure>
+
+<figure>
+  <h2>Reading a document without trusting it</h2>
+  <p class="sub">Nothing in this chain ends at "failed".</p>
+  <svg viewBox="0 0 756 232" role="img"
+       aria-label="A document goes through self-hosted OCR, then a language model chosen by document type, then guards, before fields are suggested. Two dashed fallback paths bypass the OCR or the model when either is unavailable.">
+    <g>
+      <rect class="node" x="8"   y="16" width="132" height="58" rx="9"/>
+      <text class="lbl"  x="74"  y="40" text-anchor="middle">Upload</text>
+      <text class="small" x="74" y="57" text-anchor="middle">payslip, statement</text>
+
+      <rect class="node" x="160" y="16" width="132" height="58" rx="9"/>
+      <text class="lbl"  x="226" y="40" text-anchor="middle">OCR</text>
+      <text class="small" x="226" y="57" text-anchor="middle">self-hosted, in network</text>
+
+      <rect class="node" x="312" y="16" width="132" height="58" rx="9"/>
+      <text class="lbl"  x="378" y="40" text-anchor="middle">Model by type</text>
+      <text class="small" x="378" y="57" text-anchor="middle">chosen by measurement</text>
+
+      <rect class="node" x="464" y="16" width="132" height="58" rx="9"/>
+      <text class="lbl"  x="530" y="40" text-anchor="middle">Guards</text>
+      <text class="small" x="530" y="57" text-anchor="middle">before anything applies</text>
+
+      <rect class="node" x="616" y="16" width="132" height="58" rx="9"/>
+      <text class="lbl"  x="682" y="40" text-anchor="middle">Fields</text>
+      <text class="small" x="682" y="57" text-anchor="middle">suggested, never forced</text>
+    </g>
+
+    <path class="flow" d="M140 45 H156"/>
+    <path class="flow" d="M292 45 H308"/>
+    <path class="flow" d="M444 45 H460"/>
+    <path class="flow" d="M596 45 H612"/>
+
+    <path class="fallback" d="M74 74 V116 H378 V74"/>
+    <text class="small" x="226" y="132" text-anchor="middle">OCR unavailable — the model reads the document itself</text>
+
+    <path class="fallback" d="M74 74 V170 H530 V74"/>
+    <text class="small" x="302" y="186" text-anchor="middle">no model credential — the older engine takes over</text>
+
+    <text class="small" x="378" y="216" text-anchor="middle">every path ends in a suggestion; none of them ends in "failed"</text>
+  </svg>
+  <figcaption>OCR runs on our own infrastructure, so no client document reaches a third-party API.
+  Which model reads which document type was settled by measurement, not preference. Every failure
+  degrades to a weaker path rather than stopping, and the guards run before a value is ever written
+  to a form.</figcaption>
+</figure>
+
+<figure>
+  <h2>A discount, after the booking changes</h2>
+  <p class="sub">The refund is the hard part.</p>
+  <svg viewBox="0 0 700 250" role="img"
+       aria-label="A promotion code, the rule that governs it, and the redemption that records its use; when a trip is modified the discount is recalculated against the new booking, not the original.">
+    <rect class="node" x="20" y="30" width="140" height="48" rx="9"/>
+    <text class="lbl" x="90" y="52" text-anchor="middle">Code</text>
+    <text class="small" x="90" y="68" text-anchor="middle">percentage or cash</text>
+
+    <rect class="node" x="20" y="100" width="140" height="48" rx="9"/>
+    <text class="lbl" x="90" y="122" text-anchor="middle">Rule</text>
+    <text class="small" x="90" y="138" text-anchor="middle">where, what, when, who</text>
+
+    <rect class="node" x="20" y="170" width="140" height="48" rx="9"/>
+    <text class="lbl" x="90" y="192" text-anchor="middle">Redemption</text>
+    <text class="small" x="90" y="208" text-anchor="middle">what actually happened</text>
+
+    <path class="flow" d="M160 54 H240"/>
+    <path class="flow" d="M160 124 H240"/>
+    <path class="flow" d="M160 194 H240"/>
+    <path class="flow" d="M240 54 V194"/>
+    <path class="flow" d="M240 124 H266"/>
+
+    <rect class="node" x="270" y="88" width="150" height="72" rx="9"/>
+    <text class="lbl" x="345" y="116" text-anchor="middle">Booking</text>
+    <text class="small" x="345" y="134" text-anchor="middle">cart value, stops,</text>
+    <text class="small" x="345" y="148" text-anchor="middle">dates, products</text>
+
+    <path class="cut" d="M420 124 H500"/>
+    <text class="small" x="460" y="114" text-anchor="middle" fill="#c8862a">trip modified</text>
+
+    <rect class="node" x="510" y="88" width="170" height="72" rx="9"/>
+    <text class="lbl" x="595" y="116" text-anchor="middle">Recalculate</text>
+    <text class="small" x="595" y="134" text-anchor="middle">against what the booking</text>
+    <text class="small" x="595" y="148" text-anchor="middle">became, not what it was</text>
+  </svg>
+  <figcaption>Separating the code, the rule and the redemption is what makes the refund tractable:
+  the redemption records what was actually granted, so a modified trip can be re-priced against the
+  rule rather than against a remembered discount.</figcaption>
+</figure>
+
+</div>
+</body>
+</html>

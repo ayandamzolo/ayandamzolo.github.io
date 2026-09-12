@@ -99,6 +99,8 @@ svg{width:100%;height:auto;overflow:visible}
 .facts dt{font-weight:500}
 .facts dd{margin:0 0 .85rem;color:var(--ink-2)}
 .links{display:flex;flex-wrap:wrap;gap:.6rem;list-style:none;margin:0;padding:0}
+.icon-btn{display:inline-flex;align-items:center;justify-content:center;min-width:2.5rem;min-height:2.5rem;font-size:1.05rem}
+.links a i{margin-right:.45rem}
 .links a{text-decoration:none;background:var(--ink);color:var(--sand);border-radius:999px;padding:.65rem 1.3rem;font-weight:500;display:inline-block}
 .links a:hover{background:var(--ochre)}
 
@@ -115,6 +117,7 @@ svg{width:100%;height:auto;overflow:visible}
   .stop circle,.stop text,.step{transition:none}
 }
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 <body>
 <a class="skip" href="#work">Skip to the work</a>
@@ -123,20 +126,26 @@ svg{width:100%;height:auto;overflow:visible}
   <nav class="pill" aria-label="Main">
     <span class="mono-mark">MM</span>
     <a href="#work">Work</a>
+    <a href="#personal">Personal</a>
     <a href="#method">Method</a>
     <a href="#skills">Skills</a>
     <a href="#about">About</a>
   </nav>
   <div class="pill">
-    <a href="Mitchelle_Mzolo_Resume.pdf">CV</a>
-    <a href="mailto:ayandamzolo11@gmail.com">Email</a>
+    <a class="icon-btn" href="Mitchelle_Mzolo_Resume.pdf" aria-label="Download CV (PDF)" title="Download CV">
+      <i class="fa-regular fa-file-lines" aria-hidden="true"></i></a>
+    <a class="icon-btn" href="mailto:ayandamzolo11@gmail.com" aria-label="Email Mitchelle" title="Email">
+      <i class="fa-regular fa-envelope" aria-hidden="true"></i></a>
   </div>
 </div>
 
 <header class="hero">
-  <h1>An application should never go quiet.</h1>
-  <p class="lede">I'm Mitchelle Mzolo, a full-stack engineer in Pretoria. I build and secure the
-  path a home-loan application takes to a bank — and the tooling that finds it when it stops moving.</p>
+  <h1>Nothing should fail quietly.</h1>
+  <p class="lede">I'm Mitchelle Mzolo, a full-stack engineer in Pretoria. I build the systems that move
+  money, documents and messages between companies — bank submissions for a lending platform,
+  customer conversations and executive reporting for an internet provider, booking and discount
+  logic for a travel business. And when one of them stops without telling anyone, I'm usually the
+  one who finds it.</p>
   <p class="meta">
     <span class="chip">Blue Bean Software</span>
     <span class="chip">AWS Certified Cloud Practitioner</span>
@@ -147,74 +156,133 @@ svg{width:100%;height:auto;overflow:visible}
 
 <main class="journey" id="work">
   <figure class="scene">
-    <svg viewBox="0 0 300 400" role="img" aria-label="An application's journey: captured, secured, checked, submitted, exchanged, reconciled.">
-      <path class="track" d="M60 26 V376"/>
-      <path class="track-live" id="live" d="M60 26 V376"/>
-      <g class="stop" data-i="0"><circle cx="60" cy="26" r="7"/><text x="86" y="31">Captured</text></g>
-      <g class="stop" data-i="1"><circle cx="60" cy="96" r="7"/><text x="86" y="101">Secured</text></g>
-      <g class="stop" data-i="2"><circle cx="60" cy="166" r="7"/><text x="86" y="171">Checked</text></g>
-      <g class="stop" data-i="3"><circle cx="60" cy="236" r="7"/><text x="86" y="241">Submitted</text></g>
-      <g class="stop" data-i="4"><circle cx="60" cy="306" r="7"/><text x="86" y="311">Exchanged</text></g>
-      <g class="stop" data-i="5"><circle cx="60" cy="376" r="7"/><text x="86" y="381">Reconciled</text></g>
-    </svg>
-    <figcaption>Every step is a place an application can stall without anyone being told. Most of my work lives at one of these.</figcaption>
+    <svg viewBox="0 0 300 496" role="img" aria-label="Seven areas of work: integrations, documents, conversations, reporting, money, access and recovery.">
+      <path class="track" d="M60 26 V470"/>
+      <path class="track-live" id="live" d="M60 26 V470"/>
+      <g class="stop" data-i="0"><circle cx="60" cy="26" r="7"/><text x="86" y="31">Integrations</text></g>
+      <g class="stop" data-i="1"><circle cx="60" cy="100" r="7"/><text x="86" y="105">Documents</text></g>
+      <g class="stop" data-i="2"><circle cx="60" cy="174" r="7"/><text x="86" y="179">Conversations</text></g>
+      <g class="stop" data-i="3"><circle cx="60" cy="248" r="7"/><text x="86" y="253">Reporting</text></g>
+      <g class="stop" data-i="4"><circle cx="60" cy="322" r="7"/><text x="86" y="327">Money</text></g>
+      <g class="stop" data-i="5"><circle cx="60" cy="396" r="7"/><text x="86" y="401">Access</text></g>
+      <g class="stop" data-i="6"><circle cx="60" cy="470" r="7"/><text x="86" y="475">Recovery</text></g>
+      </svg>
+    <figcaption>Seven kinds of problem, across a lending platform, an internet provider and a
+    travel booking business. The thread is the same one every time: systems that fail without
+    telling anybody.</figcaption>
   </figure>
 
   <div class="steps">
     <section class="step" data-i="0">
-      <h2>Document autofill</h2>
-      <p>Applicants upload payslips, bank statements and offers to purchase; a queued job reads them
-      with AWS Textract and fills the blank fields so nobody retypes a payslip. A document whose ID
-      number contradicts the applicant's never overwrites anything — it stays a suggestion. Tax
-      figures on payslips aren't suggested at all, because payslips mix monthly and year-to-date
-      numbers and a confident wrong figure is worse than an empty field.</p>
-      <p class="cite">Uploaded documents are treated as data, never as instructions. AWS Textract, Laravel queues, S3.</p>
+      <h2>Integrations that can't fail silently</h2>
+      <p>I own the path applications take from a lending platform to South African banks. When the
+      platform changed submission vendors I designed the cutover so in-flight applications finished
+      on the vendor already holding them while new ones routed to the replacement — nobody
+      resubmitted anything, and onboarding the next lender became configuration, not code. A
+      companion service decides whether an application qualifies for a bank's new origination
+      system or falls back to the legacy one, and reports every reason it fell back, not just the
+      first.</p>
+      <p class="cite">Mortgage platform · primary author of 828 of its 968 commits. Laravel, SOAP, MySQL, Docker. The newer service has lint and tests in CI on every push.</p>
     </section>
 
     <section class="step" data-i="1">
-      <h2>Platform security and access</h2>
-      <p>Multi-factor authentication and OTP across every login surface of a multi-tenant platform,
-      switchable per tenant. Web application firewall rules and rate limiting in production,
-      penetration-test findings tracked to remediation, and upload and download paths closed so
-      tenant documents stop being reachable by anyone who guesses a URL.</p>
-      <p class="cite">WAF, NGINX hardening, audit logging, session invalidation on both guards.</p>
+      <h2>Reading documents without trusting them</h2>
+      <p>Applicants upload payslips, bank statements and offers to purchase. In production, OCR runs on a
+      self-hosted container on our own infrastructure — no third-party API key, and no client
+      document leaves the network — and a language model turns that text into application fields.
+      Which model reads which document type was decided by measurement, not preference: the cheaper
+      model dropped names on identity documents and moved bank-statement expense totals by more
+      than ten percent between two identical runs, so those types route to a stronger one and the
+      documents that agreed stayed put.</p>
+      <p class="cite">Mortgage platform · PaddleOCR in Docker, Claude on Amazon Bedrock, Laravel queues. Field-hygiene guards are pinned to a sweep of over two thousand real documents — including one that stops a name like Nomvula being mistaken for the word "None".</p>
     </section>
 
     <section class="step" data-i="2">
-      <h2>Bank integration service</h2>
-      <p>A service that decides whether an application qualifies for a bank's new origination system
-      or must fall back to the legacy one, then routes it and tracks amendments and replies. An
-      application that fails a rule is never rejected — it falls back, and the service reports every
-      reason it did, not just the first.</p>
-      <p class="cite">Built solo. Laravel, Vue 3, Inertia, Pest. Lint and tests run in CI on every push.</p>
+      <h2>Conversations that don't waste anyone's time</h2>
+      <p>A WhatsApp bot that re-engages customers with unpaid orders and hands over to a human when
+      it can't help. Almost every commit in it is about not leaving a person hanging: don't say
+      "shortly" outside working hours, don't offer a support team that is offline, answer a
+      double-booked installation instead of going quiet, and don't reply "didn't catch that" to
+      someone who just typed a date. Its tests cover the awkward cases — webhooks arriving out of
+      order, replies landing on closed conversations, numbers it has never seen, and its own records
+      disagreeing with the provider's.</p>
+      <p class="cite">Internet provider · 127 commits, sole author. Laravel, WhatsApp Cloud API, Pest.</p>
     </section>
 
     <section class="step" data-i="3">
-      <h2>Bank submission engine</h2>
-      <p>The integration that submits applications and documents to South African lenders. When the
-      platform changed submission vendors, I designed the cutover so in-flight applications finished
-      on the vendor already holding them while new ones routed to the replacement — nobody
-      resubmitted anything, and onboarding the next lender became configuration, not code.</p>
-      <p class="cite">Primary author of 558 of 651 commits. Laravel, PHP, SOAP, MySQL, Docker.</p>
+      <h2>Making the numbers legible</h2>
+      <p>An executive and team dashboard for an internet provider: acquisition funnel, product mix,
+      early-life churn and cohort retention, with a permission model so each team sees only its own
+      figures. When the views behind it started timing out I materialised the order milestones
+      underneath, and made a failed metric report the actual reason instead of rendering an empty
+      chart — a dashboard that lies by omission is worse than one that admits it is broken.</p>
+      <p class="cite">Internet provider · 182 commits, March to September 2026. Vue 3, TypeScript, Supabase, CASL.</p>
     </section>
 
     <section class="step" data-i="4">
-      <h2>Partner data pipelines</h2>
-      <p>Secure SFTP onboarding for partners who exchange files rather than call APIs, with schema
-      validation at the boundary and access scoped per partner.</p>
-      <p class="cite">AWS Transfer Family over S3, IAM roles, CloudWatch logging. Redshift and DMS troubleshooting.</p>
+      <h2>Money logic, and what happens when it changes</h2>
+      <p>Sole author of the discount system for a travel booking platform: percentage and cash codes
+      with geographic, product, day-of-week, minimum-cart and first-booking-only rules, modelled as
+      three separate things — the code, the rule that governs it, and the redemption that records
+      its use. The hard part is refunds. When a trip is modified after a code has been applied, the
+      discount has to be recalculated against what the booking became, not what it was. I also wrote
+      the business-logic document the stakeholders signed off from.</p>
+      <p class="cite">Travel booking platform, two years · Laravel. Commission and payout logic, order import tooling and duplicate-order prevention on the same platform.</p>
     </section>
 
     <section class="step" data-i="5">
-      <h2>Finding the ones that went quiet</h2>
-      <p>When a bank's replies stop arriving, nothing errors — the application simply sits. I work
-      these as read-only investigations first: queries anchored on the business reference rather than
-      a remembered row id, run and read before anything writes, and the repair values copied from the
-      bank's own stored response rather than from anyone's memory.</p>
-      <p class="cite">Eight production post-mortems and the vendor-cutover runbooks live in the repo, not in my head.</p>
+      <h2>Access, and the infrastructure under it</h2>
+      <p>Multi-factor authentication and OTP across every login surface of a multi-tenant platform,
+      switchable per tenant. Firewall rules and rate limiting in production, penetration-test
+      findings tracked to remediation, and upload and download paths closed so tenant documents stop
+      being reachable by anyone who guesses a URL. Secure SFTP onboarding for partners who exchange
+      files rather than call APIs, scoped per partner.</p>
+      <p class="cite">Mortgage platform · AWS Transfer Family over S3, IAM, CloudWatch, NGINX hardening. On another team's pipeline I caught a database password being written to the CI log.</p>
+    </section>
+
+    <section class="step" data-i="6">
+      <h2>Finding what went quiet</h2>
+      <p>When replies stop arriving, nothing errors — the work simply sits. This is the part I am
+      best at. I run these as read-only investigations first: queries anchored on the business
+      reference rather than a remembered row id, read before anything writes, and repair values
+      copied from the upstream system's own stored response rather than from anyone's memory. Then
+      the post-mortem gets written, because the next person deserves the map.</p>
+      <p class="cite">Across all three platforms. Eight production post-mortems and the vendor-cutover runbooks live in the repository, not in my head.</p>
     </section>
   </div>
 </main>
+
+<section class="block" id="personal">
+  <h2>Outside client work</h2>
+  <p class="intro">What I build when nobody is holding the scope for me, and the thing I would
+  happily do more of.</p>
+  <div class="grid">
+    <article class="tile">
+      <h3><i class="fa-solid fa-book-open" aria-hidden="true"></i> ModernTsonga</h3>
+      <p>A reference for Xitsonga — phrases, proverbs and oral tradition — built because the language
+      deserves a good website. This one is mine, and it is the project I keep coming back to.</p>
+      <p class="cite"><a href="https://moderntsonga.netlify.app/">moderntsonga.netlify.app</a></p>
+    </article>
+
+    <article class="tile">
+      <h3><i class="fa-solid fa-dice" aria-hidden="true"></i> MVP 1 Challenger</h3>
+      <p>A prototype for a habit I am trying to build: spin a real complaint from everyday life, get
+      a research clock to answer who, what, when, where, why and how, and earn build time for the
+      answers that are specific rather than guessed. Then a bot uses what you shipped, as the person
+      who complained, on a slow connection and an old phone — and only scores you if it can finish
+      the job.</p>
+      <p class="cite">In progress. It exists because my failure mode is designing the whole platform instead of finishing version one.</p>
+    </article>
+
+    <article class="tile">
+      <h3><i class="fa-solid fa-trophy" aria-hidden="true"></i> Mentoring</h3>
+      <p>I mentored a team at the Gaming 4 Girls hackathon run by Umuzi and UNICEF in 2023, and they
+      took second place. Getting a team unstuck against a deadline is a different skill from writing
+      the code yourself, and it is the part of this work I would most like to do more of.</p>
+      <p class="cite">Umuzi and UNICEF · 2023</p>
+    </article>
+  </div>
+</section>
 
 <section class="block" id="method">
   <h2>How I work</h2>
@@ -272,46 +340,6 @@ svg{width:100%;height:auto;overflow:visible}
   </div>
 </section>
 
-<section class="block">
-  <h2>Elsewhere</h2>
-  <p class="intro">Work away from the loan path — a booking platform, a payments bot, an internal
-  dashboard, and one project that is entirely mine.</p>
-  <div class="grid">
-    <article class="tile">
-      <h3>Promotion engine</h3>
-      <p>Sole author of the discount system for a trip-booking platform: percentage and cash codes
-      with geographic, product, day-of-week, minimum-cart and first-booking-only rules, separated
-      into the code, the rule that governs it, and the redemption that records its use.</p>
-      <p>The hard part is refunds. When a trip is modified after a code has been applied, the
-      discount has to be recalculated against what the booking has become, not what it was.</p>
-      <p class="cite">Laravel. I also wrote the business-logic document the stakeholders signed off from.</p>
-    </article>
-
-    <article class="tile">
-      <h3>Payment recovery bot</h3>
-      <p>A WhatsApp bot that re-engages customers with unpaid orders and hands over to a human when
-      it can't help. Most of its tests cover the awkward cases rather than the happy path: webhooks
-      arriving out of order, replies landing on closed conversations, numbers it has never seen, and
-      its own records disagreeing with the provider's.</p>
-      <p class="cite">124 commits, sole author. Laravel, WhatsApp Cloud API, Pest.</p>
-    </article>
-
-    <article class="tile">
-      <h3>Operations dashboard</h3>
-      <p>Reporting and KPI dashboard for an internet provider's internal teams, with a shared
-      permission model so each team sees only its own figures.</p>
-      <p class="cite">Contributor. Vue 3, TypeScript, Supabase, CASL.</p>
-    </article>
-
-    <article class="tile">
-      <h3>ModernTsonga</h3>
-      <p>A reference for Xitsonga — phrases, proverbs and oral tradition — built because the language
-      deserves a good website. This one is mine, and it's the project I keep coming back to.</p>
-      <p class="cite"><a href="https://moderntsonga.netlify.app/">moderntsonga.netlify.app</a></p>
-    </article>
-  </div>
-</section>
-
 <section class="block" id="skills">
   <h2>Skills</h2>
   <div class="skills">
@@ -358,12 +386,7 @@ svg{width:100%;height:auto;overflow:visible}
   <div class="card">
     <h2>Background</h2>
 
-    <div class="highlight">
-      <h3>Mentor, Gaming 4 Girls Hackathon (2023)</h3>
-      <p>Mentored a team at the G4G hackathon run by Umuzi and UNICEF, guiding them to second place.
-      Getting a team unstuck under a deadline is a different skill from writing the code yourself,
-      and it is the part I would happily do more of.</p>
-    </div>
+    
 
     <dl class="facts">
       <dt>AWS Certified Cloud Practitioner (CLF-C02)</dt><dd>2026</dd>
@@ -378,9 +401,9 @@ svg{width:100%;height:auto;overflow:visible}
     one anybody puts on a job advert.</p>
 
     <ul class="links">
-      <li><a href="mailto:ayandamzolo11@gmail.com">Email me</a></li>
-      <li><a href="https://www.linkedin.com/in/mitchelle-mzolo-4a87b11b5/">LinkedIn</a></li>
-      <li><a href="Mitchelle_Mzolo_Resume.pdf">Download CV</a></li>
+      <li><a href="mailto:ayandamzolo11@gmail.com"><i class="fa-regular fa-envelope" aria-hidden="true"></i> Email me</a></li>
+      <li><a href="https://www.linkedin.com/in/mitchelle-mzolo-4a87b11b5/"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i> LinkedIn</a></li>
+      <li><a href="Mitchelle_Mzolo_Resume.pdf"><i class="fa-regular fa-file-lines" aria-hidden="true"></i> Download CV</a></li>
     </ul>
   </div>
 </section>
