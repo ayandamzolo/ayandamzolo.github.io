@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mitchelle Mzolo — Software Engineer</title>
-<meta name="description" content="Software engineer in Johannesburg. I work on home-loan and payment systems where a silent failure means a real application never reaches a bank.">
+<meta name="description" content="Mitchelle Mzolo — full-stack engineer in Pretoria. I build and secure multi-tenant mortgage technology: bank submission, access control, and the cloud infrastructure underneath.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -27,10 +27,11 @@
 
     <section class="hero">
         <h1>Software that must not fail quietly.</h1>
-        <p class="lede">I'm Mitchelle Mzolo, a software engineer in Johannesburg. Since late 2025 I've
-        owned the bank-submission surface of a South African home-loan platform — the code where a
-        routing mistake means a real person's application silently never reaches a lender.</p>
-        <p class="place">Blue Bean Software</p>
+        <p class="lede">I'm Mitchelle Mzolo, a full-stack engineer in Pretoria. I build and secure
+        multi-tenant mortgage technology — the bank-submission path where a routing mistake means a
+        real person's application silently never reaches a lender, and the cloud and access
+        infrastructure underneath it.</p>
+        <p class="place">Blue Bean Software. AWS Certified Cloud Practitioner.</p>
     </section>
 
     <section class="row" id="work">
@@ -46,6 +47,17 @@
                 routed to the replacement — nobody resubmitted anything, and onboarding the next
                 lender became a configuration change instead of a code change.</p>
                 <p class="cite">Primary author of 558 of 651 commits. Laravel, PHP, SOAP, MySQL, Docker.</p>
+            </article>
+
+            <article class="entry">
+                <h3>Platform security and infrastructure</h3>
+                <p>Multi-factor authentication and OTP verification across every login surface of a
+                multi-tenant platform, switchable per tenant. Web application firewall rules and rate
+                limiting in production, penetration-test findings tracked through to remediation, and
+                file upload and download paths tightened so tenant documents stop being reachable by
+                anyone who guesses a URL.</p>
+                <p class="cite">AWS Transfer Family over S3 with IAM roles and CloudWatch logging for
+                partner SFTP onboarding. WAF, NGINX hardening, audit logging.</p>
             </article>
 
             <article class="entry">
@@ -65,6 +77,15 @@
                 messages from numbers it has never seen, and its own records disagreeing with the
                 provider's.</p>
                 <p class="cite">124 commits, sole author. Laravel, WhatsApp Cloud API, Pest.</p>
+            </article>
+
+            <article class="entry">
+                <h3>Document extraction service</h3>
+                <p>An OCR and language-model pipeline that turns uploaded documents into structured,
+                checkable data, so applications stop stalling on a human retyping a payslip. Each
+                extracted field carries a confidence score, and anything below the threshold goes to a
+                person rather than being guessed at.</p>
+                <p class="cite">In progress. Python, FastAPI, EasyOCR and Tesseract, Docker.</p>
             </article>
 
             <article class="entry">
@@ -107,18 +128,18 @@
     <section class="row" id="background">
         <h2>Background</h2>
         <div class="col">
-            <img class="portrait" src="mypic.JPG" alt="Mitchelle Mzolo" width="160" height="160" loading="lazy">
             <dl class="facts">
+                <dt>AWS Certified Cloud Practitioner (CLF-C02)</dt>
+                <dd>2026</dd>
                 <dt>National Diploma, Information Technology</dt>
-                <dd>UNISA — in progress</dd>
+                <dd>University of South Africa — in progress</dd>
                 <dt>National Certificate, IT Systems Development (NQF 5)</dt>
                 <dd>Umuzi Academy</dd>
-                <dt>Foundation</dt>
-                <dd>Tshwane University of Technology</dd>
             </dl>
-            <p class="prose">Day to day: PHP and Laravel, Vue and TypeScript, MySQL and PostgreSQL,
-            Docker, AWS. Comfortable in a legacy codebase with a live client on the other end of it,
-            which is where most of my work has happened.</p>
+            <p class="prose">Day to day: PHP and Laravel, Vue and Inertia, MySQL and PostgreSQL, Redis,
+            Docker, and AWS. I also build Laravel and Vue platform features at Hit The Road Today.
+            Most of my work has happened in a legacy codebase with a live client on the other end of
+            it, which is a particular skill and not the one anyone puts on a job advert.</p>
         </div>
     </section>
 
