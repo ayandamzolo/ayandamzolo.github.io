@@ -1,317 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mitchelle Ayanda Mzolo</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="falling-petals petal-1">🌸</div>
-    <div class="falling-petals petal-2">🌼</div>
-    <div class="falling-petals petal-3">🌷</div>
-    <div class="falling-petals petal-4">🌸</div>
-    <div class="falling-petals petal-5">🌺</div>
-    <div class="falling-petals petal-6">🌼</div>
-    <div class="falling-petals petal-7">🌷</div>
-    <div class="falling-petals petal-8">🌸</div>
-    <div class="falling-petals petal-9">🌻</div>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mitchelle Mzolo — Software Engineer</title>
+<meta name="description" content="Software engineer in Johannesburg. I work on home-loan and payment systems where a silent failure means a real application never reaches a bank.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#work">Skip to work</a>
 
-    <nav>
-      <ul>
-        <li>
-          <a href="#about"><strong>About Me</strong></a>
-        </li>
-        <li>
-          <a href="#skills"><strong>Skills</strong></a>
-        </li>
-        <li>
-          <a href="#qualifications"><strong>Qualifications</strong></a>
-        </li>
-        <li>
-          <a href="#portfolio"><strong>Portfolio</strong></a>
-        </li>
-        <li>
-          <a href="#resume"><strong>Resume</strong></a>
-        </li>
-        <li>
-          <a href="#contact"><strong>Contact</strong></a>
-        </li>
-      </ul>
+<header class="bar">
+    <span class="bar-name">Mitchelle Mzolo</span>
+    <nav aria-label="Sections">
+        <a href="#work">Work</a>
+        <a href="#method">Method</a>
+        <a href="#background">Background</a>
+        <a href="Mitchelle_Mzolo_Resume.pdf">CV</a>
     </nav>
+</header>
 
-    <header class="hero">
-      <div class="hero-content">
-        <img src="mypic.JPG" alt="profile picture" class="profile-image" />
-        <div class="hero-text">
-          <h1>Mitchelle Ayanda Mzolo</h1>
-          <p class="hero-subtitle">Full-Stack Developer | Software Developer</p>
-          <p class="hero-description">
-            Building robust back-end systems and creating intuitive user
-            experiences
-          </p>
+<main class="spine">
+
+    <section class="hero">
+        <h1>Software that must not fail quietly.</h1>
+        <p class="lede">I'm Mitchelle Mzolo, a software engineer in Johannesburg. Since late 2025 I've
+        owned the bank-submission surface of a South African home-loan platform — the code where a
+        routing mistake means a real person's application silently never reaches a lender.</p>
+        <p class="place">Blue Bean Software</p>
+    </section>
+
+    <section class="row" id="work">
+        <h2>Selected work</h2>
+        <div class="col">
+
+            <article class="entry">
+                <h3>Bank submission engine</h3>
+                <p>Home-loan origination platform serving several South African lenders. I own the
+                integration that submits applications and documents to banks and reconciles their
+                replies. When the platform changed submission vendors, I designed the cutover so
+                in-flight applications finished on the vendor already holding them while new ones
+                routed to the replacement — nobody resubmitted anything, and onboarding the next
+                lender became a configuration change instead of a code change.</p>
+                <p class="cite">Primary author of 558 of 651 commits. Laravel, PHP, SOAP, MySQL, Docker.</p>
+            </article>
+
+            <article class="entry">
+                <h3>Bank integration service</h3>
+                <p>A service that decides whether a loan application qualifies for a bank's new
+                origination system or must fall back to the legacy one, then routes it and tracks
+                amendments and replies. An application that fails a rule is never rejected — it
+                falls back, and the service reports every reason it did.</p>
+                <p class="cite">Built solo. Laravel, Vue 3, Inertia, Pest. Lint and tests run in CI on every push.</p>
+            </article>
+
+            <article class="entry">
+                <h3>Payment recovery bot</h3>
+                <p>A WhatsApp bot that re-engages customers with unpaid orders and hands over to a
+                human when it cannot help. Most of its tests cover the awkward cases rather than the
+                happy path: webhooks arriving out of order, replies landing on closed conversations,
+                messages from numbers it has never seen, and its own records disagreeing with the
+                provider's.</p>
+                <p class="cite">124 commits, sole author. Laravel, WhatsApp Cloud API, Pest.</p>
+            </article>
+
+            <article class="entry">
+                <h3>Operations dashboard</h3>
+                <p>Reporting and KPI dashboard for an internet provider's internal teams, built with
+                a shared permission model so each team sees only its own figures.</p>
+                <p class="cite">Contributor. Vue 3, TypeScript, Supabase, CASL.</p>
+            </article>
+
+            <article class="entry">
+                <h3>ModernTsonga</h3>
+                <p>A reference for Xitsonga — phrases, proverbs and oral tradition — built because the
+                language deserves a good website. This one is mine, and it is the project I keep
+                coming back to.</p>
+                <p class="cite"><a href="https://moderntsonga.netlify.app/">moderntsonga.netlify.app</a></p>
+            </article>
+
         </div>
-      </div>
-    </header>
-
-    <section id="about">
-      <h2>About Me</h2>
-      <p>
-        I'm Mitchelle A. Mzolo, a passionate Full-Stack Developer with a knack
-        for building robust back-end systems and creating intuitive, seamless
-        user experiences. My journey began at Tshwane University of Technology
-        (TUT), where I specialized in C++ and developed a solid foundation in
-        software development. Since then, I’ve broadened my expertise, gaining
-        hands-on experience with industry-leading tools and frameworks.
-        Currently, I work as a Junior Full Stack Developer at HitTheRoad Today,
-        where I contribute to internal tools, debugging workflows, and scalable
-        feature improvements. I specialize in full-stack development, working
-        with technologies like Laravel, Inertia.js, Vue.js, JavaScript, and PHP.
-        I’m skilled in database management with MySQL and PostgreSQL and have
-        practical knowledge of cloud and data storage solutions with AWS and
-        MinIO. My projects reflect a blend of technical precision and a
-        user-centric approach, showcasing my ability to build scalable,
-        efficient, and user-friendly applications. Beyond technical skills, I
-        bring a collaborative mindset and a problem-solving approach to every
-        project. I love working with teams to solve complex challenges and am
-        dedicated to continuous learning to keep up with the latest industry
-        trends. I’m also currently pursuing my degree in Software Development at
-        UNISA with the goal of graduating cum laude. My portfolio includes a mix
-        of front-end and back-end projects, demonstrating my versatility, growth
-        mindset, and commitment to delivering high-quality solutions.
-      </p>
     </section>
 
-    <section id="skills">
-      <h2>Skills</h2>
-      <ul>
-        <li>
-          <strong>Frontend:</strong> HTML5, CSS3, JavaScript (ES6+), Vue.js,
-          React, Inertia.js, Responsive Design
-        </li>
-        <li>
-          <strong>Backend:</strong> PHP (Laravel), Node.js, Express.js, RESTful
-          APIs, JSON
-        </li>
-        <li><strong>Programming Languages:</strong> JavaScript, PHP, C++</li>
-        <li><strong>Database & Storage:</strong> MySQL, PostgreSQL, MinIO</li>
-        <li>
-          <strong>Cloud & DevOps:</strong> AWS, Docker, Linux (CLI), Git, GitHub
-        </li>
-        <li>
-          <strong>Tools & Workflow:</strong> VS Code, Jira, Slack, Netlify,
-          Postman
-        </li>
-        <li>
-          <strong>Soft Skills:</strong> Communication, Collaboration,
-          Problem-Solving, Time Management
-        </li>
-      </ul>
-    </section>
+    <section class="row" id="method">
+        <h2>How I work</h2>
+        <div class="col prose">
+            <p>A bug report names a symptom. Before I edit anything I find every caller of the code
+            I'm about to touch, because one guard in the shared function is a smaller change than a
+            guard in each of its callers — and fixing only the path in the ticket leaves every
+            sibling path still broken.</p>
 
-    <section id="qualifications">
-      <h2>Qualifications</h2>
-      <ul>
-        <li>
-          <strong>National Diploma in Information Technology</strong>
-          <em>(In Progress)</em>
-          <p>
-            Currently completing my degree through UNISA. My studies emphasize
-            full-stack systems, algorithms, and applied computing. I aim to
-            graduate cum laude and combine academic knowledge with industry
-            experience.
-          </p>
-        </li>
-        <li>
-          <strong
-            >National Certificate in IT (Systems Development - NQF Level
-            5)</strong
-          >
-          <em>(Completed)</em>
-          <p>
-            Comprehensive training in software development and foundational IT
-            systems with Umuzi Academy. This certificate provided essential
-            skills in coding, systems analysis, and problem-solving.
-          </p>
-        </li>
-        <li>
-          <strong>National Senior Certificate (Bachelor's Pass)</strong>
-          <em>(Completed)</em>
-          <p>
-            Achieved a high school diploma with a focus on sciences and
-            technology, laying the groundwork for a career in software
-            development.
-          </p>
-        </li>
-        <li>
-          <strong>National Diploma in Information Technology</strong>
-          <em>(Incomplete)</em>
-          <p>
-            I was pursuing a Bachelor’s degree at Tshwane University of
-            Technology (TUT) with a specialization in C++. My studies have
-            focused on software engineering principles, algorithm development,
-            and advanced programming techniques.
-          </p>
-        </li>
-      </ul>
-    </section>
+            <p>Before I touch production data I write the read-only version first: queries anchored
+            on business references rather than remembered row ids, run and read before anything
+            writes. Afterwards I write the check that proves it worked, and that would catch it
+            breaking again later.</p>
 
-    <section id="portfolio">
-      <h2>Portfolio</h2>
-      <p>Explore selected projects showcasing my skills and experience:</p>
-      <hr class="divider" />
-      <div id="mentor-section">
-        <h3>Mentor for Gaming 4 Girls Hackathon (2023)</h3>
-        <p>
-          Privileged to have mentored a talented team at the G4G hackathon,
-          organized by Umuzi and Unicef. Our team’s collaborative effort led us
-          to win second place in the competition, and it was incredibly
-          rewarding to guide the team toward success and foster a spirit of
-          innovation.
-        </p>
-      </div>
-      <hr class="divider" />
-      <div id="moderntsonga-section">
-        <h3>ModernTsonga Project</h3>
-        <p>
-          Full-stack cultural preservation website built with Vue.js, Node.js,
-          and MySQL.
-        </p>
-        <a href="https://github.com/ayandamzolo/tsonga-website" target="_blank"
-          >GitHub Repository</a
-        >
-        |
-        <a href="https://moderntsonga.netlify.app/" target="_blank"
-          >Live Site</a
-        >
-      </div>
-      <hr class="divider" />
-
-      <div id="quiz-game-section">
-        <h3>Quiz Game (with Admin Panel)</h3>
-        <p>
-          A full-stack quiz app featuring a dynamic user interface and a
-          backend-powered admin dashboard. Users can take multiple-choice
-          quizzes with real-time score tracking, while admins can log in to
-          manage questions and settings via their own dashboard.
-        </p>
-        <p>
-          <strong>Tech Stack:</strong> JavaScript, HTML, CSS, Express.js, Vite,
-          Node.js
-        </p>
-        <a href="https://github.com/ayandamzolo/quiz-app" target="_blank"
-          >GitHub Repository</a
-        >
-        |
-        <a href="https://quiz-app-gpsw.onrender.com" target="_blank"
-          >Live App</a
-        >
-        |
-        <a
-          href="https://quiz-app-gpsw.onrender.com/admin/dashboard.html"
-          target="_blank"
-          >Admin Panel</a
-        >
-      </div>
-      <hr class="divider" />
-
-      <div id="tic-tac-toe-section">
-        <h3>Tic-Tac-Toe Game</h3>
-        <p>
-          Interactive tic-tac-toe game, designed with JavaScript, HTML, and CSS
-          for responsive play.
-        </p>
-        <a href="https://github.com/ayandamzolo/tick-tack-toe" target="_blank"
-          >GitHub Repository</a
-        >
-        |
-        <a href="https://ayandamzolo.github.io/tick-tack-toe/" target="_blank"
-          >Live Site</a
-        >
-      </div>
-      <hr class="divider" />
-    </section>
-
-    <section id="resume">
-      <h2>My Resume</h2>
-
-      <div>
-        <li>
-          <a href="Mitchelle_Mzolo_Resume.pdf" target="_blank">View Resume</a>
-        </li>
-        <li>
-          <a href="Mitchelle_Mzolo_Resume.pdf" download>Download Resume</a>
-        </li>
-      </div>
-    </section>
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>
-        You can reach me at
-        <a href="mailto:ayandamzolo11@gmail.com" target="_blank"
-          >ayandamzolo11@gmail.com</a
-        >
-      </p>
-      <p>
-        Connect with me on
-        <a
-          href="https://www.linkedin.com/in/mitchelle-mzolo-4a87b11b5/"
-          target="_blank"
-          >LinkedIn</a
-        >
-      </p>
-      <p>
-        Connect with me on
-        <a href="https://github.com/ayandamzolo/" target="_blank">Github</a>
-      </p>
-      <p>Feel free to reach out to me!</p>
-
-      <form id="contact-form" method="post" action="/thanks" netlify>
-        <label for="name">Your Name:</label>
-        <div class="input-wrapper">
-          <input type="text" id="name" name="name" required />
+            <p>Then I write it down. Post-mortems for the failures worth understanding, runbooks for
+            the procedures someone else will have to run at an awkward hour. Knowledge that only
+            lives in my head is a single point of failure.</p>
         </div>
-
-        <label for="email">Your Email:</label>
-        <div class="input-wrapper">
-          <input type="email" id="email" name="email" required />
-        </div>
-
-        <label for="message">Your Message:</label>
-        <div class="input-wrapper">
-          <textarea id="message" name="message" required></textarea>
-        </div>
-
-        <button type="submit">Send</button>
-      </form>
-
-      <script>
-        async function submitForm(event) {
-          event.preventDefault();
-
-          const form = document.getElementById("contact-form");
-          const formData = new FormData(form);
-
-          try {
-            const response = await fetch("/", {
-              method: "POST",
-              body: formData,
-            });
-
-            if (response.ok) {
-              window.location.href = "/thank-you.html";
-            } else {
-              console.error("Failed to submit form");
-            }
-          } catch (error) {
-            console.error("Error submitting form:", error);
-          }
-        }
-      </script>
     </section>
 
-    <footer>
-      <p>&copy; 2025 Mitchelle Ayanda Mzolo</p>
-    </footer>
-  </body>
+    <section class="row" id="background">
+        <h2>Background</h2>
+        <div class="col">
+            <img class="portrait" src="mypic.JPG" alt="Mitchelle Mzolo" width="160" height="160" loading="lazy">
+            <dl class="facts">
+                <dt>National Diploma, Information Technology</dt>
+                <dd>UNISA — in progress</dd>
+                <dt>National Certificate, IT Systems Development (NQF 5)</dt>
+                <dd>Umuzi Academy</dd>
+                <dt>Foundation</dt>
+                <dd>Tshwane University of Technology</dd>
+            </dl>
+            <p class="prose">Day to day: PHP and Laravel, Vue and TypeScript, MySQL and PostgreSQL,
+            Docker, AWS. Comfortable in a legacy codebase with a live client on the other end of it,
+            which is where most of my work has happened.</p>
+        </div>
+    </section>
+
+    <section class="row" id="contact">
+        <h2>Get in touch</h2>
+        <div class="col">
+            <ul class="links">
+                <li><a href="mailto:ayandamzolo11@gmail.com">ayandamzolo11@gmail.com</a></li>
+                <li><a href="https://www.linkedin.com/in/mitchelle-mzolo-4a87b11b5/">LinkedIn</a></li>
+                <li><a href="Mitchelle_Mzolo_Resume.pdf">Curriculum vitae (PDF)</a></li>
+            </ul>
+        </div>
+    </section>
+
+</main>
+</body>
 </html>
