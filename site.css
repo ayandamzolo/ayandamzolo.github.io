@@ -185,3 +185,17 @@ a.card-link .cite{margin:0}
   min-width:3rem;min-height:3rem;border-radius:999px;font-size:1.15rem;padding:0}
 .links.icons-only a i{margin:0}
 .card-link .pet{margin:0 0 .8rem}
+
+.pet-float .pet-body{transition:transform .25s cubic-bezier(.34,1.56,.64,1)}
+.pet-float.is-near .pet-body{transform:translateY(-6px) scale(1.06)}
+.pet-float .pet-body.squish{animation:pet-squish .42s cubic-bezier(.34,1.56,.64,1)}
+@keyframes pet-squish{
+  0%{transform:scale(1,1)}
+  35%{transform:scale(1.16,.82) translateY(4px)}
+  70%{transform:scale(.94,1.08) translateY(-4px)}
+  100%{transform:scale(1,1)}
+}
+.pet-float .pet-arm-r,.pet-float .pet-mouth{transition:d .22s ease}
+@media (prefers-reduced-motion:reduce){
+  .pet-float .pet-body,.pet-float .pet-arm-r,.pet-float .pet-mouth{transition:none;animation:none}
+}
