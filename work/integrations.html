@@ -55,9 +55,28 @@
   flag and a migration: flip everyone to the new vendor on deploy day. That breaks every
   application already in flight, because the old vendor holds its state and the new one has never
   heard of it.</p>
-  <p>Instead, each bank submission is stamped with the time it was sent, and the vendor is
-  resolved by comparing that stamp against the cutover date. Submission time decides the route,
-  not deploy time.</p>
+  <p>So instead the vendor is resolved per submission, by comparing a timestamp on that submission
+  against the cutover date. Submission time decides the route, not deploy time.</p>
+
+  <h2>The first version of that was wrong, and I found it in the logs</h2>
+  <p>I shipped it comparing the cutover date against the application's creation time, which looks
+  equivalent and is not. A resubmission carries the original creation time with it, so any
+  application created before the cutover was pinned to the old vendor forever, including the ones
+  being resubmitted long after the switch.</p>
+  <p>I found it by auditing production logs rather than by rereading my own code. Thirty six
+  submissions had gone out on the legacy vendor after the cutover, every one of them for an
+  application created before it, against eighteen that routed correctly. That split being perfectly
+  deterministic by creation date is what proved the problem was which timestamp I had chosen, not a
+  race between two of them.</p>
+  <p>The fix needed a stamp written in the same update as the reference the vendor returns, so a
+  failed call cannot move it, plus a backfill setting the stamp to the creation time for rows
+  already in flight so their behaviour did not change underneath them. Then I went looking for
+  everywhere else that answered the same question without asking the resolver, and found seven more
+  call sites to route through it.</p>
+  <p>That last part is the bit that mattered. When the code on a submission and the code on its
+  documents disagree, the gateway cannot find the converted file under the other identity and
+  returns an error that names nothing useful. One wrong answer in seven places is seven silent
+  failures, so the fix belonged at the single point every caller passes through.</p>
 
   <figure>
     <svg class="dg" viewBox="0 0 700 316" role="img"
