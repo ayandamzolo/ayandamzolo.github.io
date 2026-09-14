@@ -72,7 +72,6 @@ svg{width:100%;height:auto;overflow:visible}
   padding:clamp(1.2rem,2.4vw,1.7rem);box-shadow:0 10px 32px rgba(90,50,22,.09)}
 .tile h3{font-family:var(--display);font-weight:800;font-size:1.3rem;letter-spacing:-.02em;margin:0 0 .5rem}
 .tile p{margin:0 0 .6rem}
-.mascot{display:block;width:min(100%,30rem);height:auto;margin:0 auto 2.4rem}
 .skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));gap:1.6rem 2.2rem}
 .skills h3{font-size:1rem;font-weight:600;margin:0 0 .5rem;color:var(--ochre)}
 .skills ul{list-style:none;margin:0;padding:0;color:var(--ink-2)}
@@ -163,15 +162,7 @@ a.card-link .cite{margin:0}
 .dg .fallback{stroke:#8d8378;stroke-width:1.6;fill:none;stroke-dasharray:5 4}
 
 /* ---------------------------------------------------------- the mascot */
-.pet{display:block;height:auto}
-.pet-sm{width:clamp(5rem,9vw,7rem)}
-.pet-md{width:clamp(8rem,16vw,12rem)}
-.pet-row{display:flex;flex-wrap:wrap;gap:clamp(1.5rem,5vw,3.5rem);
-  justify-content:center;align-items:flex-end;margin:0 0 2.6rem}
-.pet-row figure{margin:0;text-align:center}
-.pet-row figcaption{font-size:.85rem;color:var(--ink-2);margin-top:.6rem}
-.page-pet{float:right;margin:0 0 1rem 1.5rem}
-@media (max-width:34em){ .page-pet{float:none;margin:0 auto 1.2rem} }
+@media (max-width:34em){  }
 
 .pet-float{position:fixed;right:clamp(.8rem,3vw,2.2rem);bottom:clamp(.8rem,3vw,2.2rem);
   z-index:6;pointer-events:none;will-change:transform}
@@ -184,8 +175,7 @@ a.card-link .cite{margin:0}
 .links.icons-only a{display:inline-flex;align-items:center;justify-content:center;
   min-width:3rem;min-height:3rem;border-radius:999px;font-size:1.15rem;padding:0}
 .links.icons-only a i{margin:0}
-.card-link .pet{margin:0 0 .8rem}
-
+.card-link 
 .pet-float .pet-body{transition:transform .25s cubic-bezier(.34,1.56,.64,1)}
 .pet-float.is-near .pet-body{transform:translateY(-6px) scale(1.06)}
 .pet-float .pet-body.squish{animation:pet-squish .42s cubic-bezier(.34,1.56,.64,1)}
