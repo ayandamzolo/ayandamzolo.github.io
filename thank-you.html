@@ -1,74 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thank You!</title>
-    <style>
-        /* Paste the CSS styles here */
-        body {
-          font-family: Arial, sans-serif;
-          background-color: #f0f0f0;
-          color: #333;
-          padding: 20px;
-          text-align: center;
-        }
-
-        h1 {
-          color: #1e2833;
-          font-size: 36px;
-          margin-bottom: 20px;
-        }
-
-        p {
-          font-size: 18px;
-          line-height: 1.6;
-          margin-bottom: 10px;
-        }
-
-        a {
-          color: #007bff;
-          text-decoration: none;
-        }
-
-        a:hover {
-          text-decoration: underline;
-        }
-
-        .container {
-          max-width: 600px;
-          margin: 0 auto;
-          padding: 20px;
-          background-color: #ffffff;
-          border-radius: 5px;
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .footer {
-          margin-top: 20px;
-          font-size: 14px;
-          color: #666;
-        }
-
-        .footer a {
-          color: #666;
-        }
-
-        .footer a:hover {
-          color: #333;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+<title>Message received</title>
+<meta name="description" content="Your message reached me. I will reply shortly.">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="site.css">
 </head>
 <body>
-    <!-- Your HTML content goes here -->
-    <div class="container">
-        <h1>Thank you for your message!</h1>
-        <p>We have received your inquiry and will get back to you shortly.</p>
-        <p>Return to <a href="/">Home</a></p>
-    </div>
+<a class="skip" href="#main">Skip to the content</a>
 
-    <div class="footer">
-        <p>&copy; 2023 Mitchelle Ayanda Mzolo</p>
-    </div>
+<div class="chrome">
+  <nav class="pill" aria-label="Main">
+    <a class="mono-mark" href="index.html">MM</a>
+    <a href="index.html#work">Work</a>
+    <a href="personal.html">Personal</a>
+    <a href="about.html">About</a>
+  </nav>
+  <div class="pill">
+    <a class="icon-btn" href="Mitchelle_Mzolo_Resume.pdf" aria-label="Download CV (PDF)" title="Download CV">
+      <i class="fa-regular fa-file-lines" aria-hidden="true"></i></a>
+    <a class="icon-btn" href="mailto:ayandamzolo11@gmail.com" aria-label="Email Mitchelle" title="Email">
+      <i class="fa-regular fa-envelope" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+<header class="page">
+  <h1>Your message reached me.</h1>
+  <p class="lede">Nothing disappeared into a queue somewhere. I will read it and reply, usually
+  within a day or two.</p>
+</header>
+
+<main class="body" id="main" style="max-width:1180px">
+  <p class="evidence">If it is urgent, email is faster than waiting on me to check a form:
+  <a href="mailto:ayandamzolo11@gmail.com">ayandamzolo11@gmail.com</a>.</p>
+
+  <div class="cards" style="margin-top:2rem">
+    <a class="card-link" href="index.html#work">
+      <h3>The work</h3>
+      <p>Seven kinds of problem, across a lending platform, an internet provider and a travel
+      booking business.</p>
+    </a>
+    <a class="card-link" href="personal.html">
+      <h3>Outside client work</h3>
+      <p>A Xitsonga language reference, an invoice generator, a prototype, and mentoring.</p>
+    </a>
+  </div>
+</main>
+
+<nav class="nextprev" aria-label="More">
+  <a href="index.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back home</a>
+  <a href="about.html">How I work</a>
+</nav>
 </body>
 </html>
