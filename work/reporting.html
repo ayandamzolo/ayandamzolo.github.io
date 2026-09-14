@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Making the numbers legible</title>
+<meta name="description" content="An executive and team dashboard for an internet provider: materialising the order milestones when the views timed out, and making a failed metric report the reason instead of rendering an empty chart.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+<link rel="stylesheet" href="../site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to the content</a>
+
+<div class="chrome">
+  <nav class="pill" aria-label="Main">
+    <a class="mono-mark" href="../index.html">MM</a>
+    <a href="../index.html#work">Work</a>
+    <a href="../personal.html">Personal</a>
+    <a href="../about.html">About</a>
+  </nav>
+  <div class="pill">
+    <a class="icon-btn" href="../Mitchelle_Mzolo_Resume.pdf" aria-label="Download CV (PDF)" title="Download CV">
+      <i class="fa-regular fa-file-lines" aria-hidden="true"></i></a>
+    <a class="icon-btn" href="mailto:ayandamzolo11@gmail.com" aria-label="Email Mitchelle" title="Email">
+      <i class="fa-regular fa-envelope" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+<header class="page">
+  <h1>Making the numbers legible</h1>
+  <p class="lede">An executive and team dashboard for an internet provider: acquisition funnel,
+  product mix, early life churn and cohort retention, built so each team sees only its own
+  figures.</p>
+  <ul class="where">
+    <li>Internet provider</li>
+    <li>182 commits, March to September 2026</li>
+    <li>Vue 3, TypeScript, Supabase, CASL</li>
+  </ul>
+</header>
+
+<main class="body" id="main">
+
+  <h2>What the page is actually for</h2>
+  <p>Somebody opens a dashboard to decide something: where to spend, which product to push,
+  whether last month's churn was a blip or the start of a pattern. That only works while the
+  numbers are trusted, and trust breaks in a particular way. One figure that turns out to be
+  wrong costs more than ten figures that were never shown, because after it every number on the
+  page gets checked by hand, and then nobody opens the page at all.</p>
+  <p>So most of the work here is not drawing charts. It is deciding what the page does when it
+  cannot answer.</p>
+
+  <h2>When the views started timing out</h2>
+  <p>The funnel, the product mix, the early life churn window and the cohort grid are the same
+  question asked four ways: which orders reached which milestone, and when. I built it first as
+  views over the order tables, which is the right first version, because there is no second copy
+  of the truth to keep in step with the first.</p>
+  <p>Then the views started timing out. Cohort retention is the expensive one: every cohort wants
+  every order's milestone history, and the views were working that history out again on each load.</p>
+  <p>The fix was to materialise the order milestones underneath rather than to tune each metric
+  on its own. Once a milestone is a row with a date on it, the funnel, the churn window and the
+  cohort grid are all cheap reads of one table, and the next metric someone asks for does not
+  arrive with a new slow query attached.</p>
+
+  <figure>
+    <svg class="dg" viewBox="0 0 700 276" role="img"
+         aria-label="Before, the dashboard read views computed over the order tables on every load and timed out. After, the order milestones are materialised as dated rows, so each metric is a cheap read, and a metric that fails reports its reason instead of rendering an empty chart.">
+      <text class="lbl" x="20" y="30">Before</text>
+      <rect class="node" x="20" y="44" width="160" height="44" rx="10"/>
+      <text class="small" x="100" y="70" text-anchor="middle">dashboard load</text>
+      <path class="old" d="M186 66 H254"/>
+      <rect class="node" x="260" y="44" width="200" height="44" rx="10"/>
+      <text class="small" x="360" y="70" text-anchor="middle">views over the order tables</text>
+      <path class="old" d="M466 66 H534"/>
+      <text class="small" x="542" y="70">timed out</text>
+      <line class="rail" x1="20" y1="118" x2="670" y2="118"/>
+      <text class="lbl" x="20" y="150">After</text>
+      <rect class="node" x="20" y="164" width="160" height="44" rx="10"/>
+      <text class="small" x="100" y="190" text-anchor="middle">dashboard load</text>
+      <path class="new" d="M186 186 H254"/>
+      <rect class="node" x="260" y="164" width="200" height="44" rx="10"/>
+      <text class="small" x="360" y="190" text-anchor="middle">materialised order milestones</text>
+      <path class="new" d="M466 186 H534"/>
+      <text class="small" x="542" y="190">the chart renders</text>
+      <path class="fallback" d="M360 214 V 246 H 458"/>
+      <text class="small" x="466" y="250">or it says why it could not</text>
+    </svg>
+    <figcaption>Every metric is the same underlying question, so the milestones were moved once
+    rather than each chart being optimised separately. The dashed path is the case that matters
+    most: a metric that fails still has something true to say.</figcaption>
+  </figure>
+
+  <h2>A failed metric reports the reason</h2>
+  <p>The first version did what most dashboards do when a query falls over: it drew the chart with
+  nothing in it. An empty chart is not a blank space. It is a claim. It reads as zero, or as no
+  customers in this period, and either of those is something a person will act on.</p>
+  <p>A metric that fails now says what happened, where the chart would have been. The query failed,
+  or you are not permitted to see this, or there is genuinely no data in the period you selected.
+  Those are three different situations and they need three different sentences. A dashboard that
+  lies by omission is worse than one that admits it is broken.</p>
+
+  <h2>Each team sees only its own figures</h2>
+  <p>Executives see the whole picture. A team sees its own figures and not another team's. That is
+  a permission model rather than a piece of interface state, so the rules live in one definition
+  instead of being restated inside each chart, and the same definition governs what the page
+  renders and what the data layer will hand back. Hiding a card in the front end while the query
+  behind it still answers is not a permission model, it is a curtain.</p>
+
+  <h2>Two small things that changed how it was read</h2>
+  <ul>
+    <li>While the figures were still being checked against the source systems, every number carried
+    a caveat chip reading "figures under verification". It came off once they were verified, and
+    not before.</li>
+    <li>The default reporting period is month to date, because that is the question most people
+    have when they open it. A default that matches the question saves a click and prevents a
+    misreading.</li>
+  </ul>
+
+  <p class="evidence"><b>Evidence.</b> 182 commits between March and September 2026. Vue 3 and
+  TypeScript on the front end, Supabase underneath, CASL for the permission rules.</p>
+
+</main>
+
+<nav class="nextprev" aria-label="More work">
+  <a href="conversations.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Previous: conversations that don't waste anyone's time</a>
+  <a href="money.html">Next: money logic, and what happens when it changes</a>
+</nav>
+<script src="../pet.js" defer></script>
+</body>
+</html>

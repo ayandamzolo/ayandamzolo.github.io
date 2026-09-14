@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reading documents without trusting them</title>
+<meta name="description" content="Turning uploaded payslips, bank statements and offers to purchase into application fields, with self-hosted OCR, a model chosen by measurement, and guards that only ever suggest.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+<link rel="stylesheet" href="../site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to the content</a>
+
+<div class="chrome">
+  <nav class="pill" aria-label="Main">
+    <a class="mono-mark" href="../index.html">MM</a>
+    <a href="../index.html#work">Work</a>
+    <a href="../personal.html">Personal</a>
+    <a href="../about.html">About</a>
+  </nav>
+  <div class="pill">
+    <a class="icon-btn" href="../Mitchelle_Mzolo_Resume.pdf" aria-label="Download CV (PDF)" title="Download CV">
+      <i class="fa-regular fa-file-lines" aria-hidden="true"></i></a>
+    <a class="icon-btn" href="mailto:ayandamzolo11@gmail.com" aria-label="Email Mitchelle" title="Email">
+      <i class="fa-regular fa-envelope" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+<header class="page">
+  <h1>Reading documents without trusting them</h1>
+  <p class="lede">Applicants upload payslips, bank statements and offers to purchase. This reads
+  them and fills in the application, without ever letting a document decide something on its own.</p>
+  <ul class="where">
+    <li>Lending platform</li>
+    <li>In production</li>
+    <li>Laravel, PHP, Docker, queues, self-hosted OCR</li>
+  </ul>
+</header>
+
+<main class="body" id="main">
+
+  <h2>The bottleneck is somebody retyping a payslip</h2>
+  <p>The figures an application form asks for are already printed on the payslip the applicant just
+  uploaded. So the work is transcription: a person reads one screen and types into another. That is
+  where the hours go, and it is also where the wrong digits come from, because nobody proofreads a
+  number they have typed a hundred times.</p>
+  <p>The point of this system is that nobody retypes a payslip. Everything below exists because
+  removing that step also removes the human who used to notice when a figure looked wrong.</p>
+
+  <h2>The documents do not leave the network</h2>
+  <p>OCR runs on a self-hosted container on our own infrastructure, with no third-party API key, so
+  no client document leaves the network to be read. A language model then turns that extracted text
+  into application fields. The split matters: the part that handles the raw document stays inside,
+  and the part that interprets text is the only part that talks outward.</p>
+
+  <h2>Which model reads which document type was measured, not chosen</h2>
+  <p>I did not pick a model because it was cheaper or because it was better on paper. I ran the
+  document types through both and compared.</p>
+  <p>The cheaper model dropped names on identity documents. On bank statements it moved the expense
+  totals by more than ten percent between two identical runs, which means the same document read
+  twice gave two different answers, and neither run announced that it was the unreliable one. The
+  stronger model was steadier on both. So the unreliable document types route to the stronger model,
+  and the types where the two models agreed stayed where they were. Preference would have moved
+  everything, or nothing.</p>
+
+  <figure>
+    <svg class="dg" viewBox="0 0 756 232" role="img"
+         aria-label="A document goes through self-hosted OCR, then a language model chosen by document type, then guards, before fields are suggested. Two dashed fallback paths bypass the OCR or the model when either is unavailable.">
+      <g>
+        <rect class="node" x="8"   y="16" width="132" height="58" rx="9"/>
+        <text class="lbl"  x="74"  y="40" text-anchor="middle">Upload</text>
+        <text class="small" x="74" y="57" text-anchor="middle">payslip, statement</text>
+
+        <rect class="node" x="160" y="16" width="132" height="58" rx="9"/>
+        <text class="lbl"  x="226" y="40" text-anchor="middle">OCR</text>
+        <text class="small" x="226" y="57" text-anchor="middle">self-hosted, in network</text>
+
+        <rect class="node" x="312" y="16" width="132" height="58" rx="9"/>
+        <text class="lbl"  x="378" y="40" text-anchor="middle">Model by type</text>
+        <text class="small" x="378" y="57" text-anchor="middle">chosen by measurement</text>
+
+        <rect class="node" x="464" y="16" width="132" height="58" rx="9"/>
+        <text class="lbl"  x="530" y="40" text-anchor="middle">Guards</text>
+        <text class="small" x="530" y="57" text-anchor="middle">before anything applies</text>
+
+        <rect class="node" x="616" y="16" width="132" height="58" rx="9"/>
+        <text class="lbl"  x="682" y="40" text-anchor="middle">Fields</text>
+        <text class="small" x="682" y="57" text-anchor="middle">suggested, never forced</text>
+      </g>
+
+      <path class="flow" d="M140 45 H156"/>
+      <path class="flow" d="M292 45 H308"/>
+      <path class="flow" d="M444 45 H460"/>
+      <path class="flow" d="M596 45 H612"/>
+
+      <path class="fallback" d="M74 74 V116 H378 V74"/>
+      <text class="small" x="226" y="132" text-anchor="middle">OCR unavailable, so the model reads the document itself</text>
+
+      <path class="fallback" d="M74 74 V170 H530 V74"/>
+      <text class="small" x="302" y="186" text-anchor="middle">no model credential, so the older engine takes over</text>
+
+      <text class="small" x="378" y="216" text-anchor="middle">every path ends in a suggestion; none of them ends in "failed"</text>
+    </svg>
+    <figcaption>The solid line is the ordinary run. The dashed lines are the two ways it can go
+    wrong, and both of them rejoin the chain further along instead of stopping. Whichever route a
+    document takes, it arrives at the guards first and at the form second, as a suggestion.</figcaption>
+  </figure>
+
+  <h2>Guards pinned to documents that actually exist</h2>
+  <p>The field hygiene guards are pinned to a sweep of over two thousand real documents, so a guard
+  I add has to survive the shapes people really upload rather than the shapes I imagined.</p>
+  <p>One of them exists because of a name. A guard that strips placeholder words would read Nomvula
+  as the word "None" and quietly blank the field, so the guard has to tell a real name from a
+  placeholder instead of matching on the beginning of the word. That failure is worse than no
+  extraction at all, because an empty field gets asked about and a deleted name does not. Uploaded
+  documents are treated as data throughout, never as instructions.</p>
+
+  <h2>Two things it refuses to do</h2>
+  <ul>
+    <li>A document whose identity number contradicts the applicant's only ever suggests. It never
+    overwrites a field, because the likeliest explanation is that the wrong person's document was
+    attached, and that is a question for a human, not a merge.</li>
+    <li>Tax figures on payslips are deliberately not extracted at all. Payslips mix monthly and
+    year to date columns, and a confident wrong figure is worse than an empty field: an empty field
+    gets filled in, a wrong one gets approved.</li>
+  </ul>
+
+  <h2>Nothing ends at "failed"</h2>
+  <p>Every failure path degrades to a weaker route rather than stopping. If the OCR container is
+  unavailable, the model reads the document itself. If there is no model credential, the older
+  engine takes over. The result is a worse suggestion, which a person can still correct, instead of
+  an application stuck behind an error nobody is watching.</p>
+
+  <p class="evidence"><b>Evidence.</b> In production on the lending platform. Model routing is the
+  outcome of a per document type comparison, not a preference: dropped names on identity documents
+  and bank statement expense totals moving by more than ten percent between two identical runs are
+  the measurements it was decided on. Field hygiene guards are pinned to a sweep of over two
+  thousand real documents.</p>
+
+</main>
+
+<nav class="nextprev" aria-label="More work">
+  <a href="integrations.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Previous: integrations that cannot fail silently</a>
+  <a href="conversations.html">Next: conversations that survive the real world</a>
+</nav>
+<script src="../pet.js" defer></script>
+</body>
+</html>

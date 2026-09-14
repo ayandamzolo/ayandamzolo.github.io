@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Integrations that cannot fail silently</title>
+<meta name="description" content="Owning the path a loan application takes to a bank, including a submission vendor cutover where nothing in flight had to be resubmitted.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+<link rel="stylesheet" href="../site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to the content</a>
+
+<div class="chrome">
+  <nav class="pill" aria-label="Main">
+    <a class="mono-mark" href="../index.html">MM</a>
+    <a href="../index.html#work">Work</a>
+    <a href="../personal.html">Personal</a>
+    <a href="../about.html">About</a>
+  </nav>
+  <div class="pill">
+    <a class="icon-btn" href="../Mitchelle_Mzolo_Resume.pdf" aria-label="Download CV (PDF)" title="Download CV">
+      <i class="fa-regular fa-file-lines" aria-hidden="true"></i></a>
+    <a class="icon-btn" href="mailto:ayandamzolo11@gmail.com" aria-label="Email Mitchelle" title="Email">
+      <i class="fa-regular fa-envelope" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+<header class="page">
+  <h1>Integrations that cannot fail silently</h1>
+  <p class="lede">I own the path an application takes from a lending platform to South African
+  banks, and the reconciliation of what the banks send back.</p>
+  <ul class="where">
+    <li>Lending platform</li>
+    <li>Primary author, 828 of 968 commits</li>
+    <li>Laravel, PHP, SOAP, MySQL, Docker</li>
+  </ul>
+</header>
+
+<main class="body" id="main">
+
+  <h2>The problem with a submission that goes nowhere</h2>
+  <p>A home loan application is not a message. It is a person's house, a deposit already paid,
+  and a deadline in a sale agreement. When a submission fails loudly, somebody fixes it. When it
+  fails quietly, the application simply sits, and the first person to notice is the customer
+  asking why nothing has happened.</p>
+  <p>So the work is less about moving data than about making sure no state can be reached where
+  something is lost and nobody has been told.</p>
+
+  <h2>Changing vendor without asking anyone to resubmit</h2>
+  <p>The platform changed the vendor it submits through. The obvious approach is a configuration
+  flag and a migration: flip everyone to the new vendor on deploy day. That breaks every
+  application already in flight, because the old vendor holds its state and the new one has never
+  heard of it.</p>
+  <p>Instead, each bank submission is stamped with the time it was sent, and the vendor is
+  resolved by comparing that stamp against the cutover date. Submission time decides the route,
+  not deploy time.</p>
+
+  <figure>
+    <svg class="dg" viewBox="0 0 700 316" role="img"
+         aria-label="Timeline showing applications submitted before a cutover date continuing to complete on the old vendor, while applications started after the date route to the new vendor.">
+      <line class="rail" x1="40" y1="278" x2="670" y2="278"/>
+      <line class="cut" x1="350" y1="40" x2="350" y2="290"/>
+      <text class="lbl" x="350" y="28" text-anchor="middle" fill="#b8722a">cutover date</text>
+      <text class="lbl" x="40" y="70">Vendor A</text>
+      <path class="old" d="M60 95 H300"/>
+      <path class="old" d="M150 125 H430"/>
+      <path class="old" d="M250 155 H520"/>
+      <text class="small" x="536" y="159">finished where it started</text>
+      <text class="lbl" x="380" y="196">Vendor B</text>
+      <path class="new" d="M380 218 H600"/>
+      <path class="new" d="M470 246 H650"/>
+      <text class="small" x="60" y="302">application submitted</text>
+      <text class="small" x="660" y="302" text-anchor="end">completed</text>
+    </svg>
+    <figcaption>Each bar is one application. Work already in flight completed on the vendor
+    holding it, and only new work went to the replacement. Nobody resubmitted anything.</figcaption>
+  </figure>
+
+  <p>Two months later, onboarding the next lender was a configuration addition rather than a code
+  change, because the resolver already knew how to answer the question "which vendor owns this
+  submission" for any date.</p>
+
+  <h2>Routing, and never rejecting on a technicality</h2>
+  <p>A companion service decides whether an application qualifies for a bank's newer origination
+  system or has to fall back to the legacy one. The important design decision is what happens when
+  a rule fails. The service does not reject the application. It routes it to the fallback and
+  returns every reason it did so, not just the first one it hit.</p>
+  <p>That difference matters to whoever reads the result. One reason sends someone back around the
+  loop to discover the next one. All of them at once lets the problem be fixed in a single pass.</p>
+
+  <h2>What the tests actually cover</h2>
+  <ul>
+    <li>A joint application submitting successfully and landing in the right target system</li>
+    <li>Authentication with a database issued key, including that its last used timestamp is stamped</li>
+    <li>An expired key being refused</li>
+    <li>Amendments and service requests against an application already in flight</li>
+  </ul>
+
+  <p class="evidence"><b>Evidence.</b> Primary author of 828 of the lending platform's 968 commits
+  across all branches. The routing service is solo work, running lint and a Pest suite in CI on
+  every push. Vendor cutover and certificate rotation runbooks are committed alongside the code.</p>
+
+</main>
+
+<nav class="nextprev" aria-label="More work">
+  <a href="../index.html#work"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> All work</a>
+  <a href="documents.html">Next: reading documents without trusting them</a>
+</nav>
+<script src="../pet.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conversations that do not waste anyone's time</title>
+<meta name="description" content="A WhatsApp bot that re-engages customers with unpaid orders and hands over to a human when it cannot help. Almost every fix in it is about not leaving a person hanging.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+<link rel="stylesheet" href="../site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to the content</a>
+
+<div class="chrome">
+  <nav class="pill" aria-label="Main">
+    <a class="mono-mark" href="../index.html">MM</a>
+    <a href="../index.html#work">Work</a>
+    <a href="../personal.html">Personal</a>
+    <a href="../about.html">About</a>
+  </nav>
+  <div class="pill">
+    <a class="icon-btn" href="../Mitchelle_Mzolo_Resume.pdf" aria-label="Download CV (PDF)" title="Download CV">
+      <i class="fa-regular fa-file-lines" aria-hidden="true"></i></a>
+    <a class="icon-btn" href="mailto:ayandamzolo11@gmail.com" aria-label="Email Mitchelle" title="Email">
+      <i class="fa-regular fa-envelope" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+<header class="page">
+  <h1>Conversations that do not waste anyone's time</h1>
+  <p class="lede">A WhatsApp bot for an internet provider that re-engages customers with unpaid
+  orders, and hands over to a human when it cannot help.</p>
+  <ul class="where">
+    <li>Internet provider</li>
+    <li>Sole author, 127 commits</li>
+    <li>Laravel, WhatsApp Cloud API, Pest</li>
+  </ul>
+</header>
+
+<main class="body" id="main">
+
+  <h2>The bot's second job is the hard one</h2>
+  <p>An order sits unpaid. Somebody meant to pay it and then their day happened. A message asking
+  about that order is useful. A message that promises help nobody is at a desk to give is not, and
+  it costs more trust than the nudge was ever going to earn.</p>
+  <p>So the bot has two jobs. It restarts the conversation about an unpaid order, and it gets out of
+  the way the moment it cannot help. Almost every fix I made in it is about the second job: not
+  leaving a person hanging.</p>
+
+  <h2>The kinds of fix the commit log is full of</h2>
+  <ul>
+    <li>Do not say "shortly" to someone outside working hours. Shortly is a promise, and after
+    hours it is one nothing in the system can keep.</li>
+    <li>One support number and one set of hours, in one place, so two parts of the bot cannot quote
+    different ones. And never offer a team that is offline.</li>
+    <li>Answer a double booked installation instead of going silent. Someone telling you two
+    technicians are arriving on the same day deserves a reply, even when the reply is only that a
+    person is taking it from here.</li>
+    <li>Do not reply "didn't catch that" to someone who has just typed a date. If the parser is the
+    thing that failed, the customer is not the one who should be told they were unclear.</li>
+    <li>Hold escalations raised outside working hours, and tell the person when we reopen. The
+    escalation still goes through. It waits somewhere visible instead of landing in an empty room.</li>
+    <li>Stop sending courtesy nudges the provider is guaranteed to reject. A message that cannot be
+    delivered is not a courtesy. It is a failed send that somebody has to explain later.</li>
+  </ul>
+
+  <figure>
+    <svg class="dg" viewBox="0 0 700 240" role="img"
+         aria-label="Flow showing a reply the bot cannot answer: inside working hours it goes straight to a person, outside them the escalation is held and the customer is told when the team reopens.">
+      <rect class="node" x="6" y="96" width="120" height="52" rx="10"/>
+      <text class="lbl" x="66" y="118" text-anchor="middle">a reply</text>
+      <text class="small" x="66" y="135" text-anchor="middle">arrives</text>
+      <path class="flow" d="M126 122 H156"/>
+      <rect class="node" x="156" y="96" width="140" height="52" rx="10"/>
+      <text class="lbl" x="226" y="118" text-anchor="middle">the bot cannot</text>
+      <text class="small" x="226" y="135" text-anchor="middle">help with it</text>
+      <path class="flow" d="M296 122 H326"/>
+      <rect class="node" x="326" y="96" width="150" height="52" rx="10"/>
+      <text class="lbl" x="401" y="118" text-anchor="middle">inside working</text>
+      <text class="small" x="401" y="135" text-anchor="middle">hours?</text>
+      <path class="flow" d="M476 112 H508 V46 H540"/>
+      <text class="small" x="512" y="96">yes</text>
+      <rect class="node" x="540" y="20" width="155" height="52" rx="10"/>
+      <text class="lbl" x="617" y="42" text-anchor="middle">handed to a</text>
+      <text class="small" x="617" y="59" text-anchor="middle">person now</text>
+      <path class="fallback" d="M476 132 H508 V198 H540"/>
+      <text class="small" x="512" y="156">no</text>
+      <rect class="node" x="540" y="172" width="155" height="56" rx="10"/>
+      <text class="lbl" x="617" y="194" text-anchor="middle">held, and the person</text>
+      <text class="small" x="617" y="211" text-anchor="middle">is told when we reopen</text>
+    </svg>
+    <figcaption>Both branches end with the customer knowing what happens next. The difference is
+    whether that is a person now or a stated time, and neither branch is silence.</figcaption>
+  </figure>
+
+  <h2>What the tests protect</h2>
+  <p>The tests are not about the conversation that goes well. They cover the shapes real traffic
+  turns up in, which is where a bot starts talking nonsense at people.</p>
+  <ul>
+    <li>Webhooks arriving out of order, so an older status cannot overwrite a newer one</li>
+    <li>Replies landing on conversations that have already been closed</li>
+    <li>Messages from senders the system has never seen before</li>
+    <li>The bot's own records disagreeing with the provider's, which is the case that decides
+    whether we trust our row or theirs</li>
+  </ul>
+  <p>Each of those has a version where the customer is the one who pays for it: a stale status that
+  makes us nudge someone who already paid, or a reply that vanishes because the conversation it
+  belongs to was closed a minute earlier.</p>
+
+  <h2>Messaged, replied, paid</h2>
+  <p>Behind the bot is a funnel: how many customers were messaged, how many replied, how many paid.
+  It exists so that "is this campaign worth sending at all" has an answer that is not somebody's
+  impression of one. A nudge that moves nobody from replied to paid is not neutral. It is noise
+  arriving on a person's phone, and the funnel is what makes that visible enough to stop.</p>
+
+  <p class="evidence"><b>Evidence.</b> Sole author, 127 commits, on the internet provider's WhatsApp
+  bot. Laravel, the WhatsApp Cloud API and a Pest suite covering out of order webhooks, closed
+  conversations, unknown senders, and disagreement between our records and the provider's.</p>
+
+</main>
+
+<nav class="nextprev" aria-label="More work">
+  <a href="documents.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Previous: reading documents without trusting them</a>
+  <a href="reporting.html">Next: making the numbers legible</a>
+</nav>
+<script src="../pet.js" defer></script>
+</body>
+</html>

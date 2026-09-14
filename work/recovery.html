@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finding what went quiet</title>
+<meta name="description" content="A method for the failures that never throw an error: read only investigation first, repairs copied from stored evidence, then the post-mortem the next person will need.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+<link rel="stylesheet" href="../site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to the content</a>
+
+<div class="chrome">
+  <nav class="pill" aria-label="Main">
+    <a class="mono-mark" href="../index.html">MM</a>
+    <a href="../index.html#work">Work</a>
+    <a href="../personal.html">Personal</a>
+    <a href="../about.html">About</a>
+  </nav>
+  <div class="pill">
+    <a class="icon-btn" href="../Mitchelle_Mzolo_Resume.pdf" aria-label="Download CV (PDF)" title="Download CV">
+      <i class="fa-regular fa-file-lines" aria-hidden="true"></i></a>
+    <a class="icon-btn" href="mailto:ayandamzolo11@gmail.com" aria-label="Email Mitchelle" title="Email">
+      <i class="fa-regular fa-envelope" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+<header class="page">
+  <h1>Finding what went quiet</h1>
+  <p class="lede">When replies stop arriving, nothing errors. The work simply sits. This is the
+  part I am best at, and it is a method rather than a talent.</p>
+  <ul class="where">
+    <li>Across all three platforms</li>
+    <li>Read only first, then repair</li>
+    <li>Numbered investigation scripts</li>
+  </ul>
+</header>
+
+<main class="body" id="main">
+
+  <h2>Nothing throws, so nothing pages</h2>
+  <p>The failures I get called into are not the ones that turn something red. A reply that never
+  arrives raises no exception. There is no stack trace, because no code ran. The record sits in the
+  state it was left in, looking exactly like a record that is merely still in progress, and the
+  first person to notice is usually the customer asking why nothing has happened.</p>
+  <p>That shape of failure is why I do not start by fixing anything. Whatever put a record in the
+  wrong state has already been running unobserved for a while, and the worst available outcome is a
+  second wrong write layered on top of the first one, made in a hurry by me.</p>
+
+  <h2>The first pass writes nothing</h2>
+  <p>I keep the investigation as a numbered series of scripts. The numbers are not decoration: they
+  record the order the questions have to be answered in, so whoever runs them next does not have to
+  reconstruct my reasoning before they can start. The early ones only read.</p>
+  <ul>
+    <li>Every query is anchored on the business reference, never on a row identifier I remember. A
+    recalled identifier is memory, not evidence, and memory is what I am here to check.</li>
+    <li>Nothing writes until the reads have been run and understood. Not read, not skimmed: run,
+    and understood.</li>
+    <li>Each query stands alone, so any one of them can be rerun on its own without replaying the
+    ones before it.</li>
+  </ul>
+  <p>That last rule earns its keep at an awkward hour. An investigation that only works as one long
+  session has to be restarted from the top every time something interrupts it, and the person
+  restarting it is tired.</p>
+
+  <h2>Repair values come from the system, not from me</h2>
+  <p>When a write is finally justified, the values in it are copied out of the upstream system's own
+  stored response. Not from a screenshot, not from what somebody remembers the figure being, and not
+  from what it obviously should be. If the correct value cannot be pointed at where it is stored,
+  then the repair is a guess, and a confident wrong figure is worse than an empty field.</p>
+  <p>The same applies to time. The write uses the stored submission timestamp, not the current one.
+  Stamping it with now records the moment I noticed, which is the one piece of information nobody
+  needs, and it overwrites the only evidence of the real sequence of events.</p>
+
+  <h2>A dashboard is not a diagnosis</h2>
+  <p>Most of the useful detail is one layer below where the alerting looks. From a dashboard, a full
+  disk is one red number. A level down it is one table holding almost all of it, and then there is
+  something to actually fix rather than something to escalate.</p>
+  <p>While that is going on I stay on the line. Stakeholders get updated the whole way through
+  rather than silence followed by a resolution, because people can plan around a problem they can
+  see, and cannot plan around one they have only been told is being looked at.</p>
+
+  <h2>Then the post-mortem gets written</h2>
+  <p>The repair is not the end of the work. The next person to meet this failure deserves the map:
+  what went quiet, how it was found, which queries answered which question, and what to run first
+  next time. Knowledge that only lives in my head is a single point of failure, and I am not always
+  the one on duty.</p>
+
+  <p class="evidence"><b>Evidence.</b> Eight production post-mortems and the vendor cutover runbooks
+  are committed in the repository rather than living in my head, alongside the numbered investigation
+  scripts. The method has been run across a lending platform, an internet provider and a travel
+  booking platform.</p>
+
+</main>
+
+<nav class="nextprev" aria-label="More work">
+  <a href="access.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Previous: access, and the infrastructure under it</a>
+  <a href="../personal.html">Next: outside client work</a>
+</nav>
+<script src="../pet.js" defer></script>
+</body>
+</html>

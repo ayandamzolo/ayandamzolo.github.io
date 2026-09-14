@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Money logic, and what happens when it changes</title>
+<meta name="description" content="Sole author of the discount system for a travel booking platform: percentage and cash codes, the rules that govern them, and the refund recalculation when a trip is modified after a code has been applied.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+<link rel="stylesheet" href="../site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to the content</a>
+
+<div class="chrome">
+  <nav class="pill" aria-label="Main">
+    <a class="mono-mark" href="../index.html">MM</a>
+    <a href="../index.html#work">Work</a>
+    <a href="../personal.html">Personal</a>
+    <a href="../about.html">About</a>
+  </nav>
+  <div class="pill">
+    <a class="icon-btn" href="../Mitchelle_Mzolo_Resume.pdf" aria-label="Download CV (PDF)" title="Download CV">
+      <i class="fa-regular fa-file-lines" aria-hidden="true"></i></a>
+    <a class="icon-btn" href="mailto:ayandamzolo11@gmail.com" aria-label="Email Mitchelle" title="Email">
+      <i class="fa-regular fa-envelope" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+<header class="page">
+  <h1>Money logic, and what happens when it changes</h1>
+  <p class="lede">I was the sole author of the discount system on a travel booking platform. The
+  codes were the easy half. What a discount should become after the trip it was applied to has
+  changed is the half that decides whether anyone can trust the total.</p>
+  <ul class="where">
+    <li>Travel booking platform, 2024 to 2026</li>
+    <li>Sole author of the discount system</li>
+    <li>Laravel, PHP</li>
+  </ul>
+</header>
+
+<main class="body" id="main">
+
+  <h2>Two kinds of discount, one kind of code</h2>
+  <p>A discount is either a percentage off the cart or a cash amount off it. Those two behave
+  differently the moment anything around them moves, so they are separate types rather than one
+  type with a flag. Each code is generated, nine characters, so nothing about a code has to be
+  guessed at or typed from a pattern somebody remembered.</p>
+
+  <h2>Three things, not one</h2>
+  <p>The obvious model is a discounts table: code, value, conditions, times used. It works until
+  the first booking changes, and then there is nowhere to put the truth, because the row describes
+  the offer and the offer has not changed. The booking has.</p>
+  <p>So the model splits into three things. The <b>code</b> is what somebody types. The <b>rule</b>
+  is what governs whether that code is allowed to apply here, now, to this cart. The
+  <b>redemption</b> is the record of a code actually having been used, on a specific booking, for a
+  specific amount. Three tables, three responsibilities, and only one of them is a history.</p>
+
+  <h2>What a rule can say</h2>
+  <p>The rules grew as the business asked for more ways to target an offer. A rule can be
+  geographic, by country and by state. It can be tied to specific products. It can carry a usage
+  limit, or be single use, or be first booking only. It can require a minimum cart value. It can be
+  restricted to certain days of the week. And it can require a minimum number of stops on the trip.</p>
+  <p>Each of those is a separate condition rather than a special case in one long method, because
+  they arrived one at a time and they get combined in ways nobody predicts in advance.</p>
+
+  <h2>Refunds, which is the actual problem</h2>
+  <p>A code is applied at the moment of booking, against a cart that existed then. Then the trip is
+  modified. Stops are removed, dates move, products change, the cart value drops below what the
+  rule required in the first place. The question the system has to answer is not "what discount did
+  we give" but "what discount does this booking now deserve", and the difference between those two
+  numbers is money that has to move.</p>
+  <p>The discount is recalculated against what the booking became, not what it was. That is only
+  tractable because the redemption is separate from the rule. The redemption records what was
+  actually granted, so there is a fixed point to compare against. Without it, recalculating means
+  re-deriving the original grant from a rule that may have been edited since, and a confidently
+  wrong refund is worse than asking someone to check.</p>
+
+  <figure>
+    <svg class="dg" viewBox="0 0 700 250" role="img"
+         aria-label="A promotion code, the rule that governs it, and the redemption that records its use; when a trip is modified the discount is recalculated against the new booking, not the original.">
+      <rect class="node" x="20" y="30" width="140" height="48" rx="9"/>
+      <text class="lbl" x="90" y="52" text-anchor="middle">Code</text>
+      <text class="small" x="90" y="68" text-anchor="middle">percentage or cash</text>
+
+      <rect class="node" x="20" y="100" width="140" height="48" rx="9"/>
+      <text class="lbl" x="90" y="122" text-anchor="middle">Rule</text>
+      <text class="small" x="90" y="138" text-anchor="middle">where, what, when, who</text>
+
+      <rect class="node" x="20" y="170" width="140" height="48" rx="9"/>
+      <text class="lbl" x="90" y="192" text-anchor="middle">Redemption</text>
+      <text class="small" x="90" y="208" text-anchor="middle">what actually happened</text>
+
+      <path class="flow" d="M160 54 H240"/>
+      <path class="flow" d="M160 124 H240"/>
+      <path class="flow" d="M160 194 H240"/>
+      <path class="flow" d="M240 54 V194"/>
+      <path class="flow" d="M240 124 H266"/>
+
+      <rect class="node" x="270" y="88" width="150" height="72" rx="9"/>
+      <text class="lbl" x="345" y="116" text-anchor="middle">Booking</text>
+      <text class="small" x="345" y="134" text-anchor="middle">cart value, stops,</text>
+      <text class="small" x="345" y="148" text-anchor="middle">dates, products</text>
+
+      <path class="cut" d="M420 124 H500"/>
+      <text class="small" x="460" y="114" text-anchor="middle" fill="#c8862a">trip modified</text>
+
+      <rect class="node" x="510" y="88" width="170" height="72" rx="9"/>
+      <text class="lbl" x="595" y="116" text-anchor="middle">Recalculate</text>
+      <text class="small" x="595" y="134" text-anchor="middle">against what the booking</text>
+      <text class="small" x="595" y="148" text-anchor="middle">became, not what it was</text>
+    </svg>
+    <figcaption>The code, the rule and the redemption are three separate things on purpose. Only
+    the redemption is a record of something that happened, and that is the one the refund needs:
+    it says what was granted, so the modified trip can be priced again without guessing at the
+    original.</figcaption>
+  </figure>
+
+  <h2>Agreeing on the logic before writing it</h2>
+  <p>Discount rules are a business decision wearing an engineering costume. Nobody can review a
+  pricing rule by reading a pull request, so I wrote the business logic document the stakeholders
+  signed off from. It meant the arguments about what a rule should mean happened in a document,
+  where they are cheap, instead of in a refund, where they are not.</p>
+  <p>On the same platform I worked on commission and payout logic, order import tooling, and
+  duplicate order prevention. The through line is the same: every one of them is a place where the
+  system has to be right about money, and where being quietly wrong costs more than failing.</p>
+
+  <p class="evidence"><b>Evidence.</b> Sole author of the discount system across two years on the
+  platform, 2024 to 2026, in Laravel. The business logic document the stakeholders signed off from
+  is a written artefact, not a recollection.</p>
+
+</main>
+
+<nav class="nextprev" aria-label="More work">
+  <a href="reporting.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Previous: reporting</a>
+  <a href="access.html">Next: access, and the infrastructure under it</a>
+</nav>
+<script src="../pet.js" defer></script>
+</body>
+</html>

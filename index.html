@@ -3,159 +3,123 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mitchelle Mzolo, Software Engineer</title>
-<meta name="description" content="Mitchelle Mzolo, full-stack engineer in Pretoria. I build and secure multi-tenant mortgage technology: bank submission, access control, and the cloud infrastructure underneath.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+<title>Mitchelle Mzolo, Full-Stack Engineer</title>
+<meta name="description" content="Mitchelle Mzolo, full-stack engineer in Pretoria. I build the systems that move money, documents and messages between companies, and I find them when they stop.">
+<link rel="stylesheet" href="site.css">
 </head>
 <body>
-<a class="skip" href="#work">Skip to work</a>
+<a class="skip" href="#work">Skip to the work</a>
 
-<header class="bar">
-    <span class="bar-name">Mitchelle Mzolo</span>
-    <nav aria-label="Sections">
-        <a href="#work">Work</a>
-        <a href="#method">Method</a>
-        <a href="#background">Background</a>
-        <a href="Mitchelle_Mzolo_Resume.pdf">CV</a>
-    </nav>
+<div class="chrome">
+  <nav class="pill" aria-label="Main">
+    <a class="mono-mark" href="index.html" aria-current="page">MM</a>
+    <a href="#work">Work</a>
+    <a href="personal.html">Personal</a>
+    <a href="about.html">About</a>
+  </nav>
+  <div class="pill">
+    <a class="icon-btn" href="Mitchelle_Mzolo_Resume.pdf" aria-label="Download CV (PDF)" title="Download CV">
+      <i class="fa-regular fa-file-lines" aria-hidden="true"></i></a>
+    <a class="icon-btn" href="mailto:ayandamzolo11@gmail.com" aria-label="Email Mitchelle" title="Email">
+      <i class="fa-regular fa-envelope" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+<header class="hero">
+  <h1>Nothing should fail quietly.</h1>
+  <p class="lede">I'm Mitchelle Mzolo, a full-stack engineer in Pretoria. I build the systems that
+  move money, documents and messages between companies: bank submissions for a lending platform,
+  customer conversations and executive reporting for an internet provider, booking and discount
+  logic for a travel business. And when one of them stops without telling anyone, I am usually the
+  one who finds it.</p>
+  <p class="meta">
+    <span class="chip">Blue Bean Software</span>
+    <span class="chip">AWS Certified Cloud Practitioner</span>
+    <span class="chip">Pretoria, South Africa</span>
+  </p>
 </header>
 
-<main class="spine">
+<main class="block" id="work">
+  <h2>Seven kinds of problem</h2>
+  <p class="intro">Across a lending platform, an internet provider and a travel booking business.
+  The thread is the same one every time: systems that fail without telling anybody.</p>
 
-    <section class="hero">
-        <h1>Software that must not fail quietly.</h1>
-        <p class="lede">I'm Mitchelle Mzolo, a full-stack engineer in Pretoria. I build and secure
-        multi-tenant mortgage technology: the bank-submission path where a routing mistake means a
-        real person's application silently never reaches a lender, and the cloud and access
-        infrastructure underneath it.</p>
-        <p class="place">Blue Bean Software. AWS Certified Cloud Practitioner.</p>
-    </section>
+  <div class="cards">
+    <a class="card-link" href="work/integrations.html">
+      <h3>Integrations that cannot fail silently</h3>
+      <p>Owning the path an application takes to a bank, including a vendor cutover where nothing
+      in flight had to be resubmitted.</p>
+      <p class="cite">Lending platform</p>
+    </a>
 
-    <section class="row" id="work">
-        <h2>Selected work</h2>
-        <div class="col">
+    <a class="card-link" href="work/documents.html">
+      <h3>Reading documents without trusting them</h3>
+      <p>Self-hosted OCR so no client document leaves the network, and a model chosen per document
+      type by measurement rather than preference.</p>
+      <p class="cite">Lending platform</p>
+    </a>
 
-            <article class="entry">
-                <h3>Bank submission engine</h3>
-                <p>Home-loan origination platform serving several South African lenders. I own the
-                integration that submits applications and documents to banks and reconciles their
-                replies. When the platform changed submission vendors, I designed the cutover so
-                in-flight applications finished on the vendor already holding them while new ones
-                routed to the replacement, so nobody resubmitted anything, and onboarding the next
-                lender became a configuration change instead of a code change.</p>
-                <p class="cite">Primary author of 558 of 651 commits. Laravel, PHP, SOAP, MySQL, Docker.</p>
-            </article>
+    <a class="card-link" href="work/conversations.html">
+      <h3>Conversations that do not waste anyone's time</h3>
+      <p>A WhatsApp bot where almost every fix is about not leaving a person hanging.</p>
+      <p class="cite">Internet provider, sole author</p>
+    </a>
 
-            <article class="entry">
-                <h3>Platform security and infrastructure</h3>
-                <p>Multi-factor authentication and OTP verification across every login surface of a
-                multi-tenant platform, switchable per tenant. Web application firewall rules and rate
-                limiting in production, penetration-test findings tracked through to remediation, and
-                file upload and download paths tightened so tenant documents stop being reachable by
-                anyone who guesses a URL.</p>
-                <p class="cite">AWS Transfer Family over S3 with IAM roles and CloudWatch logging for
-                partner SFTP onboarding. WAF, NGINX hardening, audit logging.</p>
-            </article>
+    <a class="card-link" href="work/reporting.html">
+      <h3>Making the numbers legible</h3>
+      <p>An executive dashboard, and making a failed metric admit it failed rather than render an
+      empty chart.</p>
+      <p class="cite">Internet provider</p>
+    </a>
 
-            <article class="entry">
-                <h3>Bank integration service</h3>
-                <p>A service that decides whether a loan application qualifies for a bank's new
-                origination system or must fall back to the legacy one, then routes it and tracks
-                amendments and replies. An application that fails a rule is never rejected. It falls back, and the service reports every reason it did.</p>
-                <p class="cite">Built solo. Laravel, Vue 3, Inertia, Pest. Lint and tests run in CI on every push.</p>
-            </article>
+    <a class="card-link" href="work/money.html">
+      <h3>Money logic, and what happens when it changes</h3>
+      <p>A discount engine, and the harder half: recalculating a refund against what a booking
+      became rather than what it was.</p>
+      <p class="cite">Travel booking platform, sole author</p>
+    </a>
 
-            <article class="entry">
-                <h3>Payment recovery bot</h3>
-                <p>A WhatsApp bot that re-engages customers with unpaid orders and hands over to a
-                human when it cannot help. Most of its tests cover the awkward cases rather than the
-                happy path: webhooks arriving out of order, replies landing on closed conversations,
-                messages from numbers it has never seen, and its own records disagreeing with the
-                provider's.</p>
-                <p class="cite">124 commits, sole author. Laravel, WhatsApp Cloud API, Pest.</p>
-            </article>
+    <a class="card-link" href="work/access.html">
+      <h3>Access, and the infrastructure under it</h3>
+      <p>Multi-factor authentication, firewall rules, penetration test remediation and partner
+      SFTP onboarding. Most of it nobody asked for.</p>
+      <p class="cite">Lending platform</p>
+    </a>
 
-            <article class="entry">
-                <h3>Document autofill</h3>
-                <p>Applicants upload payslips, bank statements and offers to purchase; a queued job
-                reads them with AWS Textract and fills the blank fields on the application form so
-                nobody retypes a payslip. A document whose ID number contradicts the applicant's
-                never overwrites anything. It stays a suggestion. Tax figures on payslips are
-                deliberately not suggested at all, because payslips mix monthly and year-to-date
-                numbers, and a confident wrong figure is worse than an empty field. Uploaded
-                documents are treated as data, never as instructions.</p>
-                <p class="cite">AWS Textract, Laravel queues, S3. Shipped 2026.</p>
-            </article>
-
-            <article class="entry">
-                <h3>Operations dashboard</h3>
-                <p>Reporting and KPI dashboard for an internet provider's internal teams, built with
-                a shared permission model so each team sees only its own figures.</p>
-                <p class="cite">Contributor. Vue 3, TypeScript, Supabase, CASL.</p>
-            </article>
-
-            <article class="entry">
-                <h3>ModernTsonga</h3>
-                <p>A reference for Xitsonga: phrases, proverbs and oral tradition, built because the
-                language deserves a good website. This one is mine, and it is the project I keep
-                coming back to.</p>
-                <p class="cite"><a href="https://moderntsonga.netlify.app/">moderntsonga.netlify.app</a></p>
-            </article>
-
-        </div>
-    </section>
-
-    <section class="row" id="method">
-        <h2>How I work</h2>
-        <div class="col prose">
-            <p>A bug report names a symptom. Before I edit anything I find every caller of the code
-            I'm about to touch, because one guard in the shared function is a smaller change than a
-            guard in each of its callers, and fixing only the path in the ticket leaves every
-            sibling path still broken.</p>
-
-            <p>Before I touch production data I write the read-only version first: queries anchored
-            on business references rather than remembered row ids, run and read before anything
-            writes. Afterwards I write the check that proves it worked, and that would catch it
-            breaking again later.</p>
-
-            <p>Then I write it down. Post-mortems for the failures worth understanding, runbooks for
-            the procedures someone else will have to run at an awkward hour. Knowledge that only
-            lives in my head is a single point of failure.</p>
-        </div>
-    </section>
-
-    <section class="row" id="background">
-        <h2>Background</h2>
-        <div class="col">
-            <dl class="facts">
-                <dt>AWS Certified Cloud Practitioner (CLF-C02)</dt>
-                <dd>2026</dd>
-                <dt>National Diploma, Information Technology</dt>
-                <dd>University of South Africa, in progress</dd>
-                <dt>National Certificate, IT Systems Development (NQF 5)</dt>
-                <dd>Umuzi Academy</dd>
-            </dl>
-            <p class="prose">Day to day: PHP and Laravel, Vue and Inertia, MySQL and PostgreSQL, Redis,
-            Docker, and AWS. I also build Laravel and Vue platform features at Hit The Road Today.
-            Most of my work has happened in a legacy codebase with a live client on the other end of
-            it, which is a particular skill and not the one anyone puts on a job advert.</p>
-        </div>
-    </section>
-
-    <section class="row" id="contact">
-        <h2>Get in touch</h2>
-        <div class="col">
-            <ul class="links">
-                <li><a href="mailto:ayandamzolo11@gmail.com">ayandamzolo11@gmail.com</a></li>
-                <li><a href="https://www.linkedin.com/in/mitchelle-mzolo-4a87b11b5/">LinkedIn</a></li>
-                <li><a href="Mitchelle_Mzolo_Resume.pdf">Curriculum vitae (PDF)</a></li>
-            </ul>
-        </div>
-    </section>
-
+    <a class="card-link" href="work/recovery.html">
+      <h3>Finding what went quiet</h3>
+      <p>Read-only first, anchored on the business reference, because a recalled identifier is
+      memory and not evidence.</p>
+      <p class="cite">All three</p>
+    </a>
+  </div>
 </main>
+
+<section class="block">
+  <h2>Elsewhere on this site</h2>
+  <div class="cards">
+    <a class="card-link" href="personal.html">
+      <h3>Outside client work</h3>
+      <p>A Xitsonga language reference, a prototype for finishing version one, and mentoring a
+      hackathon team to second place.</p>
+    </a>
+    <a class="card-link" href="about.html">
+      <h3>How I work</h3>
+      <p>Six habits, the skills behind them, and the background.</p>
+    </a>
+  </div>
+
+  <ul class="links icons-only" style="margin-top:2rem">
+    <li><a href="mailto:ayandamzolo11@gmail.com" aria-label="Email Mitchelle" title="Email"><i class="fa-regular fa-envelope" aria-hidden="true"></i></a></li>
+    <li><a href="https://www.linkedin.com/in/mitchelle-mzolo-4a87b11b5/" aria-label="LinkedIn profile" title="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a></li>
+    <li><a href="Mitchelle_Mzolo_Resume.pdf" aria-label="Download CV (PDF)" title="Download CV"><i class="fa-regular fa-file-lines" aria-hidden="true"></i></a></li>
+  </ul>
+</section>
+
+<script src="pet.js" defer></script>
 </body>
 </html>

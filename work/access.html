@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Access, and the infrastructure under it</title>
+<meta name="description" content="Multi-factor authentication across every login surface of a multi-tenant platform, closed document paths, a hardened edge, and secure SFTP onboarding for partners. Most of it was not a ticket.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+<link rel="stylesheet" href="../site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to the content</a>
+
+<div class="chrome">
+  <nav class="pill" aria-label="Main">
+    <a class="mono-mark" href="../index.html">MM</a>
+    <a href="../index.html#work">Work</a>
+    <a href="../personal.html">Personal</a>
+    <a href="../about.html">About</a>
+  </nav>
+  <div class="pill">
+    <a class="icon-btn" href="../Mitchelle_Mzolo_Resume.pdf" aria-label="Download CV (PDF)" title="Download CV">
+      <i class="fa-regular fa-file-lines" aria-hidden="true"></i></a>
+    <a class="icon-btn" href="mailto:ayandamzolo11@gmail.com" aria-label="Email Mitchelle" title="Email">
+      <i class="fa-regular fa-envelope" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+<header class="page">
+  <h1>Access, and the infrastructure under it</h1>
+  <p class="lede">Who can get in, what they can reach once they are in, and how partner files
+  arrive. Most of this work was not requested by a ticket. I found it.</p>
+  <ul class="where">
+    <li>Lending platform</li>
+    <li>Security and infrastructure work</li>
+    <li>AWS Transfer Family, S3, IAM, CloudWatch, NGINX</li>
+  </ul>
+</header>
+
+<main class="body" id="main">
+
+  <h2>Nobody files a ticket for this</h2>
+  <p>A ticket describes something a person has already noticed. Security gaps are the opposite:
+  nobody has noticed yet, and the day somebody does is the day it has already happened. So most of
+  what follows started with me reading a login path, or a download route, or a build log, and not
+  liking what I found there.</p>
+
+  <h2>Every login surface, not just the main one</h2>
+  <p>A multi-tenant platform has more than one way in. Multi-factor authentication that covers the
+  front door and not the others is a false sense of security, so one-time passwords went onto every
+  login surface rather than the one most people use.</p>
+  <p>It is switchable per tenant, because the tenants are separate organisations with their own
+  policies. A single platform-wide setting would have been either too weak for the strictest tenant
+  or an imposition on the rest, and the version that gets turned off everywhere to unblock one
+  client protects nobody.</p>
+
+  <h2>Sessions that actually end, passwords that actually change</h2>
+  <p>Logging out of one guard while staying authenticated on the other is not a logout, so session
+  invalidation happens on both. Sessions are regenerated as well, so an identifier handed out before
+  authentication cannot be carried across it.</p>
+  <p>On top of that, password reuse is prevented and a reset can be forced. A forced reset is only
+  worth the disruption if the new password cannot be the old one.</p>
+
+  <h2>Documents that anyone could reach by guessing</h2>
+  <p>Tenant documents were reachable by URL. Not linked, not advertised, but reachable by anyone who
+  guessed the address, which means the only thing standing between a client's bank statement and a
+  stranger was that nobody had tried. I closed the upload and download paths so authorisation is
+  checked on the document itself, not inferred from the fact that somebody had the link.</p>
+
+  <h2>The edge</h2>
+  <p>Web application firewall rules and rate limiting run in production, NGINX is hardened, and
+  versions with known vulnerabilities were upgraded rather than noted. Penetration test findings are
+  tracked through to remediation, which is the part that usually gets dropped: a findings list is a
+  description of the problem, and it is very easy to file one and feel finished.</p>
+
+  <h2>Partners who send files rather than call an API</h2>
+  <p>Not every partner integrates over an API. Some exchange files, and they are going to keep doing
+  that, so the honest answer is to make the file path safe instead of pretending it will be replaced.
+  Secure SFTP onboarding runs on AWS Transfer Family over S3, with IAM roles and CloudWatch logging,
+  and access scoped per partner so no partner can see another's files.</p>
+  <p>Incoming files are schema validated at the boundary. A file that is wrong should be refused at
+  the door, where there is still somebody to tell, rather than discovered later as bad rows that have
+  already been read by something downstream.</p>
+
+  <h2>When the data stops arriving</h2>
+  <p>The same work continues underneath, in Redshift and DMS troubleshooting when synchronisation
+  breaks. A sync that fails rarely errors in anyone's face. It just quietly gets older, and everything
+  reading from it keeps answering confidently with yesterday.</p>
+
+  <h2>The password in the build log</h2>
+  <p>On another team's pipeline I found a database password being written to the CI log. Nothing was
+  broken. The build passed, and it had been passing. That is the shape of most of this work: the
+  system was doing exactly what it had been told to do, and anyone who could read the pipeline had a
+  production credential.</p>
+
+  <p class="evidence"><b>Evidence.</b> Multi-factor authentication and OTP across every login surface
+  of the lending platform, switchable per tenant. Firewall rules and rate limiting in production,
+  penetration test findings tracked to remediation, NGINX hardening. Partner SFTP onboarding on AWS
+  Transfer Family over S3 with IAM and CloudWatch. AWS Certified Cloud Practitioner, 2026.</p>
+
+</main>
+
+<nav class="nextprev" aria-label="More work">
+  <a href="money.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Previous: money logic, and what happens when it changes</a>
+  <a href="recovery.html">Next: finding what went quiet</a>
+</nav>
+<script src="../pet.js" defer></script>
+</body>
+</html>
