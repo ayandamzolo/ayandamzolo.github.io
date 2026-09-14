@@ -58,16 +58,17 @@
   <p>So instead the vendor is resolved per submission, by comparing a timestamp on that submission
   against the cutover date. Submission time decides the route, not deploy time.</p>
 
-  <h2>The first version of that was wrong, and I found it in the logs</h2>
-  <p>I shipped it comparing the cutover date against the application's creation time, which looks
-  equivalent and is not. A resubmission carries the original creation time with it, so any
-  application created before the cutover was pinned to the old vendor forever, including the ones
+  <h2>Auditing production caught a routing bug I had shipped</h2>
+  <p>The first version compared the cutover date against the application's creation time. Those two
+  look equivalent and are not: a resubmission carries the original creation time with it, so any
+  application created before the cutover would route to the old vendor forever, including ones
   being resubmitted long after the switch.</p>
-  <p>I found it by auditing production logs rather than by rereading my own code. Thirty six
+  <p>I make a habit of reading the logs after a change rather than trusting the code I just
+  wrote, and that is what surfaced it. Thirty six
   submissions had gone out on the legacy vendor after the cutover, every one of them for an
   application created before it, against eighteen that routed correctly. That split being perfectly
-  deterministic by creation date is what proved the problem was which timestamp I had chosen, not a
-  race between two of them.</p>
+  deterministic by creation date is what identified the cause precisely: the choice of timestamp,
+  not a race between two of them.</p>
   <p>The fix needed a stamp written in the same update as the reference the vendor returns, so a
   failed call cannot move it, plus a backfill setting the stamp to the creation time for rows
   already in flight so their behaviour did not change underneath them. Then I went looking for
