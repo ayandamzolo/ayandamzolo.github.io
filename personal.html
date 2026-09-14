@@ -47,6 +47,20 @@
     </article>
 
     <article class="card-link" style="cursor:auto">
+      <h3>BillWell</h3>
+      <p>An invoice generator. You fill in a form, it renders a styled A4 PDF and it lands in your
+      downloads. Your business details, logo, bank details and terms are typed once and kept in your
+      own browser, so nothing about you is stored on the server.</p>
+      <p>The interesting constraint was hosting. The headless Chrome that the PDF renderer bundles
+      is around 370 MB, which does not fit in a serverless function, so on a serverless host it
+      loads a 67 MB build instead and keeps the full one locally, where the test can exercise the
+      real thing. That test boots the server, generates one invoice, and checks the bytes really are
+      a PDF.</p>
+      <p class="cite">Node, Express, Puppeteer.<br>
+      <a href="https://billwell.netlify.app/">billwell.netlify.app</a></p>
+    </article>
+
+    <article class="card-link" style="cursor:auto">
       <h3>mvpOne Challenger</h3>
       <p>A prototype for a habit I am trying to build. Spin a real complaint from everyday life,
       answer who, what, when, where, why and how against a clock, and earn build time for the
