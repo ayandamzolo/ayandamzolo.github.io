@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
 <title>Outside client work</title>
-<meta name="description" content="A Xitsonga language reference, a prototype for finishing version one, and mentoring a hackathon team to second place.">
+<meta name="description" content="A Xitsonga language reference, an invoice generator, a synthetic test identity generator, a prototype, and mentoring a hackathon team to second place.">
 <link rel="stylesheet" href="site.css">
 </head>
 <body>
@@ -58,6 +58,19 @@
       a PDF.</p>
       <p class="cite">Node, Express, Puppeteer.<br>
       <a href="https://billwell.netlify.app/">billwell.netlify.app</a></p>
+    </article>
+
+    <article class="card-link" style="cursor:auto">
+      <h3>Persona ZA</h3>
+      <p>A card index of synthetic South African identities for testing forms. Each card is a made-up
+      person with a valid-format ID number, where the date of birth, gender, citizenship and check digit all
+      agree with the rest of the record, across 18 fields ordered for form entry.</p>
+      <p>The interesting part is making fake data safe to use. Email addresses use example.com, which is
+      reserved and can never receive mail, and employers and banks are placeholders rather than real
+      businesses. Every card's seed sits in the address bar, so a failing test can be shared as a link and
+      rerun with exactly the data that broke it.</p>
+      <p class="cite">Plain JavaScript, no dependencies. 8 tests validate 2,000 generated identities.<br>
+      <a href="https://persona-za.netlify.app/">persona-za.netlify.app</a></p>
     </article>
 
     <article class="card-link" style="cursor:auto">
