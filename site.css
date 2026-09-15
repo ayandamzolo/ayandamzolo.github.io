@@ -192,3 +192,28 @@ a.card-link .cite{margin:0}
 @supports not (color: color-mix(in srgb, red 50%, transparent)){
   .chip,.where li{border-color:rgba(44,30,21,.24)}
 }
+
+/* ======================================================== mobile fixes */
+
+/* Tap targets: links used as navigation get a comfortable touch height. */
+.nextprev a{display:inline-block;padding:.7rem 0}
+.cite a,.evidence a{display:inline-block;padding:.4rem 0}
+
+@media (max-width:560px){
+  /* Both pills must stay on screen. At phone widths the nav was wide enough to push
+     the CV and email buttons off the right edge, and because the header is fixed
+     the page never scrolled to reveal them. */
+  .chrome{gap:.4rem}
+  .pill{gap:0;padding:.28rem;background:rgba(255,252,248,.96)}
+  .pill a{font-size:.86rem;padding:.55rem .6rem}
+  .chrome .mono-mark{display:none}
+  .pill .icon-btn{min-width:2.4rem;min-height:2.4rem;padding:0}
+}
+
+@media (max-width:700px){
+  /* Wide flow diagrams keep a legible size and scroll sideways inside their own
+     frame, instead of shrinking their labels to about 4px. The caption stays put. */
+  .body figure{overflow-x:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+  .body figure svg{min-width:640px}
+  .body figcaption{position:sticky;left:0;max-width:calc(100vw - 5rem)}
+}
