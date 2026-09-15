@@ -122,6 +122,13 @@
     misreading.</li>
   </ul>
 
+  <h2>Commissions, payouts and orders</h2>
+  <p>The same reporting sits on top of a commission system I also work on: commission and payout
+  logic, a self-service simulator so a campaign can be modelled before anyone commits money to it,
+  order import tooling, and duplicate order prevention.</p>
+  <p>The rule running through all of it matches the dashboard. Missing finance data reads as nil,
+  never as zero, because a zero is a claim about the business and a nil is an honest gap.</p>
+
   <p class="evidence"><b>Evidence.</b> 182 commits between March and September 2026. Vue 3 and
   TypeScript on the front end, Supabase underneath, CASL for the permission rules.</p>
 
